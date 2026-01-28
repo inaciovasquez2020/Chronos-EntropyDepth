@@ -3,7 +3,7 @@
 
 ---
 
-### 🛡️ Institutional Verification
+###  Institutional Verification
 * **Registry ID:** `ART-CHRON-01`
 * **Status:** Framework / Conditional (Definitions Locked)
 * **Framework Alignment:** Unified Rigidity Framework (URF) — Temporal Invariants
@@ -43,4 +43,19 @@ This ensures that the "logic-width" $k$ remains sufficient to characterize the s
 **ORCID:** [0009-0008-8459-3400](https://orcid.org/0009-0008-8459-3400)
 
 ---
-© 2026 Inacio F. Vasquez. Definitions Locked.
+```markdown
+## Research Status
+
+The EntropyDepth formalism and Chronos lower bounds are structurally closed.
+Algorithmic universality assumptions are explicitly labeled where used.
+
+## Citation
+
+```bibtex
+@manual{Vasquez_EntropyDepth_2026,
+  author       = {Vasquez, Inacio F.},
+  title        = {Chronos / EntropyDepth — Structural Lower Bounds},
+  institution  = {Independent Research Program},
+  year         = {2026},
+  url          = {https://github.com/inaciovasquez2020/Chronos-EntropyDepth}
+}
