@@ -1,68 +1,103 @@
-# Chronos / EntropyDepth
+# Chronos / EntropyDepth  
 **The Chronos Operator and Structural Non-Amplification Principles**
 
 ---
 
-###  Institutional Verification
-* **Registry ID:** `ART-CHRON-01`
-* **Status:** Framework / Conditional (Definitions Locked)
-* **Framework Alignment:** Unified Rigidity Framework (URF) — Temporal Invariants
-* **Core Constraint:** Structural Non-Amplification
+## Scope
+
+This repository is a **Tier A module** in the **Scientific Infrastructure (URF)**.  
+It defines the **temporal invariance layer** of the Unified Rigidity Framework.
+
+It contains:
+- the Chronos operator formalism,
+- EntropyDepth invariants,
+- structural non-amplification theorems,
+- closed lower-bound principles for time evolution.
+
+No simulations or numerical pipelines are used.  
+All results are analytic, structural, and deterministic.
+
+---
+
+## Institutional Verification
+
+- **Registry ID:** ART-CHRON-01  
+- **Status:** Core Definitions Closed / Theorems Conditional  
+- **Framework Alignment:** Unified Rigidity Framework (URF) — Temporal Invariants  
+- **Core Constraint:** Structural Non-Amplification  
 
 ---
 
 ## Significance Statement
-The **Chronos / EntropyDepth** repository serves as the canonical reference for temporal rigidity within the URF. It defines the **Chronos Operator**, which governs how structural stability persists over time. By establishing **EntropyDepth Invariants**, this framework proves the **Non-Amplification Principle**: the structural complexity (entropy) of a rigid system cannot grow beyond the bounds defined by its initial logic-width dependency.
+
+The **Chronos / EntropyDepth** module provides the canonical theory of
+**temporal rigidity** within URF.
+
+It formalizes how structural stability persists under time evolution,
+via the **Chronos Operator**.
+
+The central result is the **Non-Amplification Principle**:
+
+> Structural complexity (entropy) cannot increase beyond bounds imposed by the
+> initial logic-width and structural constraints.
+
+This prevents “entropy cascades” in rigid systems.
+
+---
 
 ## Core Results
-* **Chronos Operator:** The formal state-transition operator for time-invariant rigidity.
-* **EntropyDepth Invariants:** Mathematical bounds on the depth of information processing within a finite structure.
-* **Non-Amplification Principles:** Proving that rigidity walls prevent the cascading growth of entropy in closed operator systems.
+
+### 1. Chronos Operator
+
+The operator \(\mathcal{T}\) governing admissible temporal evolution,
+preserving structural invariants.
+
+### 2. EntropyDepth Invariants
+
+Bounds on the depth of information processing in finite structures:
+
+\[
+\mathrm{ED}(\mathcal{T}) \le \Phi(k, tw)
+\]
+
+### 3. Structural Non-Amplification
+
+Rigidity walls forbid unbounded growth of entropy in closed systems.
+
+Temporal evolution remains **structurally constrained**.
+
+---
 
 ## Mathematical Context
-Chronos is analyzed as the operator $\mathcal{T}$ that preserves the spectral gap $\lambda_1$ across temporal shifts. The **EntropyDepth** ($\text{ED}$) is constrained such that:
-$$\text{ED}(\mathcal{T}) \le \Phi(k, tw)$$
-This ensures that the "logic-width" $k$ remains sufficient to characterize the system's stability as it evolves, preventing "structural decay."
+
+Chronos is analyzed as an operator preserving the spectral gap \(\lambda_1\)
+across time slices.
+
+EntropyDepth quantifies the maximum refinement depth achievable without
+violating URF admissibility.
+
+This links:
+- logic width,
+- temporal evolution,
+- and global rigidity.
+
+---
 
 ## Artifacts & Lifecycle
-* **Definitions:** Locked (v1.0.0).
-* **Core Theorems:** Conditional on final enumeration of the SIGC preorder.
-* **Future Documentation:** Citable manuscripts and machine-readable certificates are forthcoming as part of the URF-SG standard.
 
-## Related Projects
-* **[URF Core](https://github.com/inaciovasquez2020/urf-core):** The foundational math.
-* **[TRW-ERB](https://github.com/inaciovasquez2020/trw-erb-sigc):** The zero-capacity terminal witness.
-* **[Vasquez Index](https://inaciovasquez2020.github.io/):** Canonical research hub.
+- **Definitions:** Locked (v1.0)  
+- **Core Theorems:** Conditional (on universality assumptions explicitly labeled)  
+- **Status:** Structural framework complete  
+
+This repository serves as the **reference spine** for all URF temporal results.
 
 ---
 
-## Contact
-**Inacio F. Vasquez** — Independent Research Program  
-**Web:** [www.vasquezresearch.com](https://www.vasquezresearch.com)  
-**Email:** [inacio@vasquezresearch.com](mailto:inacio@vasquezresearch.com)  
-**ORCID:** [0009-0008-8459-3400](https://orcid.org/0009-0008-8459-3400)
+## Reproducibility
 
----
-```markdown
-## Research Status
+All results are deterministic and analytic.
 
-The EntropyDepth formalism and Chronos lower bounds are structurally closed.
-Algorithmic universality assumptions are explicitly labeled where used.
+Verification consists of:
 
-## Citation
-
-```bibtex
-@manual{Vasquez_EntropyDepth_2026,
-  author       = {Vasquez, Inacio F.},
-  title        = {Chronos / EntropyDepth — Structural Lower Bounds},
-  institution  = {Independent Research Program},
-  year         = {2026},
-  url          = {https://github.com/inaciovasquez2020/Chronos-EntropyDepth}
-}
-This repository is a Tier A module in the Scientific Infrastructure.
-It contains a canonical component of the Unified Rigidity Framework (URF).
-- v1.0 — Canonical Scientific Infrastructure release.
-All results are reproducible from the contents of this repository.
-Build and execution instructions are provided in this README.
-Root manifest:
-https://github.com/inaciovasquez2020/scientific-infrastructure
+```bash
+ls
