@@ -1,2 +1,5 @@
-Chronos EntropyDepth manuscript repository.
-Non-executable. LaTeX and figures only.
+Chronos and EntropyDepth
+
+Manuscript repository for the Chronos / EntropyDepth theory and its role as a locality-capacity obstruction.
+
+Status: manuscript repository (non-executable).
