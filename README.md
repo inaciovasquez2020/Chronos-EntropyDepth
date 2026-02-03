@@ -1,5 +1,33 @@
-Chronos and EntropyDepth
+# Chronos-EntropyDepth
 
-Manuscript repository for the Chronos / EntropyDepth theory and its role as a locality-capacity obstruction.
+This repository contains the research implementation and analysis for Entropy-Depth relationships within the Chronos framework. It is an indexed component of the Vasquez research ecosystem.
 
-Status: manuscript repository (non-executable).
+## Overview
+The `Chronos-EntropyDepth` module provides the computational logic for measuring and analyzing entropy-depth metrics as part of the Universal Reference Frame (URF) research suite.
+
+## Canonical Registry
+This repository is a registered module of the Vasquez Index. Stable references, archival DOIs, and reproducibility links are maintained at:
+* [Vasquez Index Dashboard](https://inaciovasquez2020.github.io/vasquez-index/dashboard.html)
+
+## Repository Status
+* **Repository Handle:** inaciovasquez2020/Chronos-EntropyDepth
+* **Stability:** Refer to the Vasquez Index for the latest stable DOI and version history.
+* **Infrastructure:** [scientific-infrastructure](https://github.com/inaciovasquez2020/scientific-infrastructure)
+
+---
+
+## Technical Notes
+* **Integration:** This module is designed to work in conjunction with `chronos-urf-rr` and `urf-core`.
+* **Reproducibility:** To ensure consistent computational results, utilize the environment configurations defined in the `scientific-infrastructure` module.
+* **Implementation:** This repository contains specific research logic and data structures; it contains no standalone administrative code.
+
+## Citation
+If you use this research or implementation in your work, please cite it as follows:
+
+```bibtex
+@manual{Vasquez_Chronos_EntropyDepth_2026,
+  author = {Vasquez, Inacio F.},
+  title  = {Chronos-EntropyDepth: Research Implementation and Analysis},
+  year   = {2026},
+  url    = {[https://github.com/inaciovasquez2020/Chronos-EntropyDepth](https://github.com/inaciovasquez2020/Chronos-EntropyDepth)}
+}
