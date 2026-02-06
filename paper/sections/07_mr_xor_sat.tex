@@ -1,0 +1,86 @@
+% paper/sections/07_mr_xor_sat.tex
+% MR-XOR: Canonical SAT instantiation of Mixing Rigidity for affine XOR gadget families
+
+\subsection{Canonical SAT Instantiation: Affine XOR Gadgets (MR-XOR)}
+\label{sec:mr-xor}
+
+\paragraph{Model.}
+Fix constants \(k\in\mathbb N\), locality radius \(r\in\mathbb N\), maximum factor-graph degree \(\Delta\in\mathbb N\), and arity bound \(a\in\mathbb N\).
+Let \(\{I_n\}_{n\ge 1}\) be a family of satisfiable affine XOR-SAT instances with:
+(i) each constraint is an affine parity relation of arity at most \(a\);
+(ii) the factor graph \(G_n\) has maximum degree at most \(\Delta\);
+(iii) the instance is tiled by gadgets from a fixed finite library \(\mathcal H\) (e.g. \(K_4\)-patch XOR gadgets), with all predicate/constraint labels drawn from the finite set of affine parity predicates of arity \(\le a\).
+Let \(X\) denote a uniformly random satisfying assignment (or the canonical solution random variable under the distribution \(P_n\)), so \(H(X)=\Theta(n)\) for the intended hard families.
+
+\paragraph{FO\(^k\)-local neighborhood type.}
+For a variable node \(v\in V(G_n)\), let \(B_r(v)\) be the radius-\(r\) neighborhood in the \emph{labeled} factor graph (variable/constraint bipartition, incidence, and constraint labels).
+Write \(\mathrm{tp}_{k,r}(v)\) for the FO\(^k\) type of the rooted labeled structure \(B_r(v)\).
+
+\begin{definition}[XOR local configuration type]
+A \emph{(rooted) XOR configuration type} is an FO\(^k\) equivalence class of rooted radius-\(r\) labeled neighborhoods \(B_r(v)\), with labels given by affine XOR predicates of arity \(\le a\).
+\end{definition}
+
+\begin{lemma}[Bounded local configuration types for XOR]
+\label{lem:bounded-local-types-xor}
+There exists a constant
+\[
+N = N(k,\Delta,a,r,\mathcal H)
+\]
+such that for all \(n\), the set \(\{\mathrm{tp}_{k,r}(v): v\in V(G_n)\}\) has cardinality at most \(N\).
+\end{lemma}
+
+\begin{proof}
+Each radius-\(r\) neighborhood in a graph of maximum degree \(\Delta\) contains at most
+\(
+1+\Delta+\cdots+\Delta^r = O(\Delta^r)
+\)
+vertices.
+Constraint labels range over a finite set: the number of affine parity predicates of arity \(\le a\) is finite (at most \(2^{a+1}\) for fixed arity \(a\)).
+Hence there are only finitely many rooted labeled graphs of radius \(r\) up to isomorphism, bounded by a function of \((\Delta,r,a)\).
+FO\(^k\) types refine isomorphism types on bounded structures, so the number of FO\(^k\) rooted radius-\(r\) types is finite and bounded by a constant \(N(k,\Delta,a,r,\mathcal H)\) independent of \(n\).
+\end{proof}
+
+\paragraph{Overlap determinacy for affine XOR.}
+The key additional fact in the affine XOR setting is that overlaps of neighborhoods determine the induced constraint relations on the overlap: affine parity constraints restrict assignments via linear equations over \(\mathbb F_2\), and restriction to an intersection is unique once the local labeled incidence pattern is fixed.
+
+\begin{lemma}[Overlap determinacy for affine XOR neighborhoods]
+\label{lem:overlap-determinacy-xor}
+Let \(v,w\in V(G_n)\). The induced system of affine XOR relations on \(B_r(v)\cap B_r(w)\) is determined (up to FO\(^k\) equivalence) by the pair of local types \(\mathrm{tp}_{k,r}(v)\) and \(\mathrm{tp}_{k,r}(w)\) together with the rooted overlap shape.
+In particular, two occurrences of the same rooted XOR configuration type glue across overlaps in a type-deterministic way.
+\end{lemma}
+
+\begin{proof}
+In the labeled factor graph, the overlap \(B_r(v)\cap B_r(w)\) is a labeled substructure whose incidence pattern is fixed by the overlap shape.
+Affine XOR constraints are linear relations over \(\mathbb F_2\); restriction of a linear system to a subset of variables/constraints is uniquely determined by the restricted incidence plus the affine labels.
+Therefore, once the local labeled patterns are fixed, the induced relations on intersections are fixed as well.
+The FO\(^k\) statement follows because FO\(^k\) cannot distinguish two overlaps with identical labeled rooted patterns.
+\end{proof}
+
+\paragraph{Mixing patterns.}
+Let \(\mathcal R\) be any FO\(^k\)-local refinement process operating on the instance (or its associated certificates), and let \(\mathsf{Mix}(\mathcal R)\) denote the set of \emph{effective mixture patterns} (equivalence classes of refinement-induced local states) appearing during the process.
+
+\begin{theorem}[Mixing Rigidity for affine XOR SAT (MR-XOR)]
+\label{thm:mr-xor}
+For the affine XOR gadget family \(\{I_n\}\), there exists a constant
+\[
+M = M(k,\Delta,a,r,\mathcal H)
+\]
+such that for every FO\(^k\)-local refinement process \(\mathcal R\),
+\[
+|\mathsf{Mix}(\mathcal R)| \le M,
+\]
+uniformly in \(n\).
+\end{theorem}
+
+\begin{proof}
+By Lemma~\ref{lem:bounded-local-types-xor}, there are at most \(N\) possible rooted FO\(^k\) radius-\(r\) configuration types.
+If \(|\mathsf{Mix}(\mathcal R)|\) exceeded a sufficiently large constant depending only on \(N\), then along the process some local refinement state would repeat on the same configuration type (pigeonhole on the finite type set and finite refinement vocabulary at radius \(r\)).
+When a configuration type repeats, the refinement dynamics restricted to that neighborhood cannot generate new distinguishable information under FO\(^k\) locality, since the process only accesses bounded-radius labeled structure and has already realized the same local view.
+Finally, by Lemma~\ref{lem:overlap-determinacy-xor}, overlaps between neighborhoods of repeated types glue deterministically: repeated local types cannot ``fractally'' generate infinitely many mixture states via varying overlap interactions.
+Thus the set of effective mixture patterns is bounded by a constant \(M(k,\Delta,a,r,\mathcal H)\).
+\end{proof}
+
+\paragraph{Role in Chronos.}
+Theorem~\ref{thm:mr-xor} provides the canonical SAT instantiation of the abstract Mixing Rigidity hypothesis used in the Chronos/EntropyDepth lower bound.
+In particular, any argument in this manuscript requiring Mixing Rigidity may cite Theorem~\ref{thm:mr-xor} when specialized to affine XOR gadget SAT families.
+
