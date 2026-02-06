@@ -25,6 +25,12 @@ jobs:
           pdflatex main.tex
           pdflatex main.tex
 
+      - name: Upload PDF artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: Chronos-PDF
+          path: paper/main.pdf
+
       - name: Install Lean 4 (non-interactive)
         run: |
           curl -L https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
