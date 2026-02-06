@@ -10,20 +10,15 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Install TeX Live
-        run: sudo apt-get update && sudo apt-get install -y texlive-full
-
-      - name: Compile LaTeX
+      - name: Install Lean 4
         run: |
-          cd paper
-          pdflatex main.tex
-          bibtex main
-          pdflatex main.tex
-          pdflatex main.tex
+          curl -L https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh
+          source $HOME/.elan/env
+          elan toolchain install stable
+          elan default stable
 
-      - name: Echo success
-        run: echo "Chronos LaTeX build completed"
+      - name: Build Lean project
+        run: |
+          source $HOME/.elan/env
+          lake build
 
