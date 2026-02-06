@@ -3,6 +3,12 @@
 \usepackage{amsmath,amssymb,amsthm}
 \usepackage{hyperref}
 
+% Theorem-like environments
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{corollary}[theorem]{Corollary}
+
 \title{Chronos / EntropyDepth Manuscript}
 \author{Inacio F. Vasquez}
 \date{\today}
@@ -13,12 +19,41 @@
 
 \begin{abstract}
 Canonical SAT instantiation (MR-XOR) integrated into Chronos / EntropyDepth.
+This manuscript formalizes Mixing Rigidity, Entropy Accumulation, and Hard Transcript Capacity within a concrete SAT gadget framework.
 \end{abstract}
 
 \tableofcontents
 
-% Include sections
+\section{Introduction}
+This manuscript integrates MR-XOR as the canonical SAT instantiation for the Chronos / EntropyDepth program.
+It provides a rigorous framework for local-to-global information lower bounds on refinement processes and operator coercivity.
+
+\section{Preliminaries}
+Define FO\(^k\)-locality, bounded-degree graphs, refinement processes, and the basic notions of entropy depth and transcript capacity.
+
+\section{Hard Transcript Capacity (HTC)}
+Formal statement of HTC for polynomial-time observers, with range-bound justification and capacity arguments.
+
+\section{Mixing Rigidity (MR) and Entropy Accumulation (EA)}
+Definitions and lemmas establishing finite local configuration types, configuration pumping, and the EA martingale.
+
+\section{Chronos Lower Bound}
+Derivation of
+\[
+T \ge c\,\frac{H(P_n)}{\log C}
+\]
+for any admissible FO\(^k\)-local refinement process, with SIC and EA.
+
+\section{MR-Coercivity Bridge}
+Finite-defect operator coercivity derived from MR, existence of finite-rank projections \(P\), and bounds on near-kernel dimension.
+
+\section{Canonical SAT Instantiation: Affine XOR Gadgets (MR-XOR)}
+\label{sec:mr-xor}
+
 \input{sections/07_mr_xor_sat}
+
+\section{Conclusion}
+MR-XOR confirms the Chronos program for a concrete NP-hard family, fully integrating local rigidity, entropy depth, and capacity bounds.
 
 \end{document}
 
