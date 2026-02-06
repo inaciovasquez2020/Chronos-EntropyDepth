@@ -1,5 +1,7 @@
 # Chronos-EntropyDepth
 
+[Referee Map](REFEREE.md) · [Claims Policy](CLAIMS.md) · Explicit Claims Classification
+[Status](STATUS.md) · Stable · Referee bundle frozen (referee-v1.0)
 This repository contains the research implementation and analysis for Entropy-Depth relationships within the Chronos framework. It is an indexed component of the Vasquez research ecosystem.
 
 ## Overview
