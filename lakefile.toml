@@ -1,0 +1,10 @@
+name = "Chronos-EntropyDepth"
+version = "0.1.0"
+defaultTargets = ["chronos-entropydepth"]
+
+[[lean_lib]]
+name = "ChronosEntropyDepth"
+
+[[lean_exe]]
+name = "chronos-entropydepth"
+root = "Main"
