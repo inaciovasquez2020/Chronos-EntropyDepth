@@ -17,6 +17,9 @@ This repository is a registered module of the Vasquez Index. Stable references, 
 * **Infrastructure:** [scientific-infrastructure](https://github.com/inaciovasquez2020/scientific-infrastructure)
 
 ---
+## Project Pages
+- Conceptual overview: https://inaciovasquez2020.github.io
+- Status dashboard: https://inaciovasquez2020.github.io/vasquez-index/
 
 ## Technical Notes
 * **Integration:** This module is designed to work in conjunction with `chronos-urf-rr` and `urf-core`.
