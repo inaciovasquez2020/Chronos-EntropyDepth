@@ -24,5 +24,8 @@ jobs:
       - name: Update Lake manifest
         run: lake update
 
-      - name: Build Chronos
+      - name: Build Chronos core
         run: lake build
+
+      - name: Enforce Chronos invariant
+        run: lake env lean tests/ChronosInvariant.lean
