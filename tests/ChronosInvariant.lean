@@ -1,11 +1,9 @@
 /-
-  Chronos REAL invariant:
+  Chronos–EntropyDepth REAL invariant:
 
-  The Chronos core must be importable and typecheck in isolation.
-  This file should remain minimal and stable.
+  The project’s logical root module must be importable and typecheck.
 -/
 
-import Chronos
+import <REAL.MODULE.PATH>
 
--- Minimal sanity witness: universe-polymorphic identity
 def chronosInvariantWitness (α : Sort u) (x : α) : α := x
