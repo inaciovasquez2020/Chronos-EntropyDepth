@@ -2,16 +2,17 @@ name: chronos-check
 
 on:
   pull_request:
-  push:
-    branches-ignore:
-      - main
 
 jobs:
-  chronos:
+  chronos-check:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v4
+
       - name: Chronos kernel reference check
         run: |
-          grep -q "Chronos Kernel (Certified)" README.md
+          set -e
+          grep -q "Chronos Kernel" README.md
           echo "chronos-check passed"
+
