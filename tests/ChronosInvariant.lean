@@ -4,20 +4,20 @@ set_option autoImplicit false
 namespace Chronos
 
 -- Abstract types
-constant State : Type
-constant Entropy : Type
+axiom State : Type
+axiom Entropy : Type
 
 -- Transcript
-constant τ : Nat → State
+axiom τ : Nat → State
 
 -- Entropy measure (abstract)
-constant H : State → Entropy
+axiom H : State → Entropy
 
 -- Capacity bound (abstract)
-constant C : Entropy
+axiom C : Entropy
 
 -- Abstract bound relation
-constant Bound : Entropy → Entropy → Prop
+axiom Bound : Entropy → Entropy → Prop
 
 -- Kernel capacity axiom
 axiom capacity :
@@ -33,3 +33,4 @@ by
   exact capacity t
 
 end Chronos
+
