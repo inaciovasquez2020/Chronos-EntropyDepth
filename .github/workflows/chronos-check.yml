@@ -16,4 +16,3 @@ jobs:
           set -e
           grep -q "Chronos Kernel" README.md
           echo "chronos-check passed"
-
