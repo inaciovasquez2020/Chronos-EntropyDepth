@@ -16,7 +16,7 @@ constant H : State → Entropy
 -- Capacity bound (abstract)
 constant C : Entropy
 
--- Abstract bound relation (no notation)
+-- Abstract bound relation
 constant Bound : Entropy → Entropy → Prop
 
 -- Kernel capacity axiom
@@ -25,7 +25,7 @@ axiom capacity :
     Bound (H (τ (t + 1))) (H (τ t)) ∨
     Bound (H (τ (t + 1))) C
 
--- Kernel consequence (structural reordering)
+-- Kernel consequence (reordering only)
 theorem chronos_step_bound (t : Nat) :
   Bound (H (τ (t + 1))) C ∨
   Bound (H (τ (t + 1))) (H (τ t)) :=
