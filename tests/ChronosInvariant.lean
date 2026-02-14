@@ -16,19 +16,20 @@ constant H : State → Entropy
 -- Capacity bound (abstract)
 constant C : Entropy
 
--- Abstract order (no arithmetic needed)
-constant le : Entropy → Entropy → Prop
-infix:50 " ≤ₑ " => le
+-- Abstract bound relation (no notation)
+constant Bound : Entropy → Entropy → Prop
 
 -- Kernel capacity axiom
 axiom capacity :
-  ∀ t : Nat, H (τ (t + 1)) ≤ₑ H (τ t) ∨ H (τ (t + 1)) ≤ₑ C
+  ∀ t : Nat,
+    Bound (H (τ (t + 1))) (H (τ t)) ∨
+    Bound (H (τ (t + 1))) C
 
--- Kernel consequence (purely structural)
+-- Kernel consequence (structural reordering)
 theorem chronos_step_bound (t : Nat) :
-  H (τ (t + 1)) ≤ₑ C ∨ H (τ (t + 1)) ≤ₑ H (τ t) :=
+  Bound (H (τ (t + 1))) C ∨
+  Bound (H (τ (t + 1))) (H (τ t)) :=
 by
   exact capacity t
 
 end Chronos
-
