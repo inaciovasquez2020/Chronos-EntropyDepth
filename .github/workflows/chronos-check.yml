@@ -2,14 +2,13 @@ name: chronos-check
 
 on:
   pull_request:
+  push:
 
 jobs:
   chronos-check:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v4
-
       - name: Chronos kernel reference check
         run: |
           set -e
