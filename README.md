@@ -36,3 +36,15 @@ If you use this research or implementation in your work, please cite it as follo
   year   = {2026},
   url    = {[https://github.com/inaciovasquez2020/Chronos-EntropyDepth](https://github.com/inaciovasquez2020/Chronos-EntropyDepth)}
 }
+
+## Chronos Kernel (Certified)
+
+This repository relies on the **certified Chronos Kernel** defined in:
+
+- Repository: `phase-transition-pnp`
+- Certificate: `CHRONOS_KERNEL_0001`
+- Invariant: Capacity ⇒ Entropy ⇒ EntropyDepth
+- Status: schema-validated, minisign-signed, CI-enforced
+
+Canonical source:
+https://github.com/inaciovasquez2020/phase-transition-pnp
