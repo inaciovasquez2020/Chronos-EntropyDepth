@@ -58,3 +58,6 @@ If you use this research or implementation in your work, please cite it as follo
 
 ![chronos-check](https://github.com/inaciovasquez2020/Chronos-EntropyDepth/actions/workflows/chronos-check.yml/badge.svg)
 >>>>>>> d65891b (docs: add Chronos CI status badge)
+
+
+Structural boundary note: docs/foundations/chronos_no_go_theorem.md
