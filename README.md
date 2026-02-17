@@ -57,3 +57,10 @@ Chronos operates under the URF structural laws indexed at https://github.com/ina
 ## Status
 
 ![chronos-check](https://github.com/inaciovasquez2020/Chronos-EntropyDepth/actions/workflows/chronos-check.yml/badge.svg)
+<<<<<<< HEAD
+=======
+>>>>>>> d65891b (docs: add Chronos CI status badge)
+
+
+Structural boundary note: docs/foundations/chronos_no_go_theorem.md
+>>>>>>> origin/main
