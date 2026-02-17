@@ -52,12 +52,15 @@ If you use this research or implementation in your work, please cite it as follo
   url    = {https://github.com/inaciovasquez2020/Chronos-EntropyDepth}
 }
 
-<<<<<<< HEAD
-=======
+Chronos operates under the URF structural laws indexed at https://github.com/inaciovasquez2020/urf-core/blob/main/docs/foundations/structural_laws_index.md
+
 ## Status
 
 ![chronos-check](https://github.com/inaciovasquez2020/Chronos-EntropyDepth/actions/workflows/chronos-check.yml/badge.svg)
+<<<<<<< HEAD
+=======
 >>>>>>> d65891b (docs: add Chronos CI status badge)
 
 
 Structural boundary note: docs/foundations/chronos_no_go_theorem.md
+>>>>>>> origin/main
