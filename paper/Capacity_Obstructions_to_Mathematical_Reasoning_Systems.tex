@@ -1,0 +1,129 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{geometry}
+\usepackage{hyperref}
+\geometry{margin=1in}
+
+% --- Theorem Environments (MANDATORY) ---
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+
+\theoremstyle{plain}
+\newtheorem{lemma}[definition]{Lemma}
+\newtheorem{theorem}[definition]{Theorem}
+\newtheorem{corollary}[definition]{Corollary}
+
+\title{Capacity Obstructions to Mathematical Reasoning Systems}
+\author{Inacio F. Vasquez \\ Independent Researcher}
+\date{}
+
+\begin{document}
+\maketitle
+
+\hrule
+\vspace{0.5em}
+\noindent
+\textbf{STATUS:} STATEMENT / CONDITIONAL \\
+\textbf{SCOPE:} Structural limitations of refinement-based reasoning systems under bounded transcript capacity. \\
+\textbf{DEPENDENCIES:} Shannon information theory; locality-limited computation; entropy accounting. \\
+\textbf{NON-CLAIMS:} No empirical performance claims; no statements about specific models; no impossibility for global-invariant or oracle-augmented systems.
+\vspace{0.5em}
+\hrule
+
+\section{Background}
+Locality constraints in logic and computation formalize the limits of extracting global structure from bounded local information. Finite-variable logics, Ehrenfeucht--Fra\"iss\'e games, and graph refinement algorithms establish that fixed-resource procedures cannot distinguish certain global properties. In parallel, modern automated reasoning systems operate via incremental state updates driven by bounded-context observations.
+
+We use standard Shannon information measures and classical locality results as the ambient framework.
+
+\section{Motivation}
+Why do refinement-based reasoning systems exhibit fluent but unreliable behavior on open mathematical problems, even as scale increases?
+
+This manuscript isolates a structural obstruction independent of training, heuristics, or implementation details.
+
+\section{Intuition}
+A refinement system can only retain a bounded amount of persistent information about a problem instance. Each refinement step therefore reduces uncertainty by at most a constant amount. Problems whose solution spaces carry linear or superlinear entropy cannot be collapsed by such systems without exceeding their information-carrying capacity. Beyond this point, additional information becomes operationally inaccessible.
+
+\section{Refinement Systems}
+\begin{definition}[Refinement System]
+A refinement system is a computational process that updates its internal state through local transformations based on bounded-context observations, without access to global invariants or unbounded persistent memory.
+\end{definition}
+
+This class includes bounded-variable logical procedures, local graph refinement algorithms, neural language models, and incremental human reasoning under working-memory constraints.
+
+\section{Transcript Capacity}
+\begin{definition}[Transcript Capacity]
+The transcript capacity $\mathrm{TC}$ of a refinement system is the supremum of mutual information it can retain, in the Shannon sense, about the evolving problem state across sequential refinement steps.
+\end{definition}
+
+\section{Entropy--Depth Obstruction}
+Let $P$ be a problem with solution-space entropy $H(P)$.
+
+\begin{lemma}[Per-step Entropy Reduction Bound]
+For any refinement system with transcript capacity $\mathrm{TC}$, the expected entropy reduction per refinement step is bounded above by a constant depending only on $\mathrm{TC}$.
+\end{lemma}
+
+\begin{lemma}[Cumulative Entropy Requirement]
+If $H(P)=\Theta(n)$, any process reducing the entropy to $O(1)$ requires $\Omega(n)$ total entropy reduction.
+\end{lemma}
+
+\begin{theorem}[Entropy--Depth Lower Bound]
+For any refinement system with bounded transcript capacity, solving a problem $P$ with $H(P)=\Theta(n)$ requires $\Omega(n)$ sequential refinement depth.
+\end{theorem}
+
+\section{The Viotropic Regime}
+\begin{definition}[Operational Mutual Information]
+Let $X$ denote the internal system state and $O$ its observation channel. Define
+\[
+I_{\mathrm{op}}(X;O) := H(O) - H(O \mid X).
+\]
+\end{definition}
+
+\begin{definition}[Viotropic Information]
+Information is \emph{viotropic} if $I_{\mathrm{op}}(X;O)=0$, i.e.\ it is operationally inaccessible despite internal presence.
+\end{definition}
+
+\begin{theorem}[Viotropic Wall --- Conditional]
+There exists $\kappa>0$ such that for any refinement system,
+\[
+H_{\mathrm{extractable}} > \kappa \cdot \mathrm{TC}
+\quad \Rightarrow \quad
+I_{\mathrm{op}}(X;O)=0 .
+\]
+\end{theorem}
+
+\section{Consequences}
+Open mathematical research problems typically exhibit unbounded dependency depth and high solution-space entropy.
+
+\begin{corollary}
+No refinement system with bounded transcript capacity can reliably perform open-ended mathematical proof discovery or validation.
+\end{corollary}
+
+\section{Failure Modes}
+This framework fails if:
+\begin{itemize}
+\item The system exits the refinement regime via exact global invariants.
+\item Unbounded persistent memory or oracle access is introduced.
+\item Transcript capacity scales superlinearly with problem size.
+\end{itemize}
+
+\section{Relationship Map}
+This obstruction:
+\begin{itemize}
+\item Refines classical locality limits into an entropy accounting statement.
+\item Is orthogonal to training-scale or optimization-based explanations.
+\item Does not apply to kernel-verified proof assistants or symbolic systems with exact global checks.
+\end{itemize}
+
+\section*{References}
+\begin{enumerate}
+\item C.\ E.\ Shannon, \emph{A Mathematical Theory of Communication}, Bell System Technical Journal (1948).
+\item L.\ Libkin, \emph{Elements of Finite Model Theory}, Springer (2004).
+\item N.\ Immerman, \emph{Descriptive Complexity}, Springer (1999).
+\item J.\ D.\ Hamkins, \emph{Can large language models do mathematics?}, blog (2023).
+\end{enumerate}
+
+\end{document}
+
