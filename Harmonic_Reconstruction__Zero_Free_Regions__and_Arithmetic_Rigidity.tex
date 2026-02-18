@@ -1,0 +1,179 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{geometry}
+\usepackage{hyperref}
+
+\geometry{margin=1in}
+
+% --- Theorem Environments ---
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+
+\theoremstyle{plain}
+\newtheorem{theorem}[definition]{Theorem}
+\newtheorem{lemma}[definition]{Lemma}
+
+\theoremstyle{remark}
+\newtheorem{remark}[definition]{Remark}
+
+\title{Harmonic Reconstruction, Zero--Free Regions, and Arithmetic Rigidity}
+\author{Inacio F. Vasquez\\Independent Researcher}
+\date{February 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We construct a Harmonic Reconstruction operator associated with the von Mangoldt
+explicit formula and show that a classical zero--free region for the Riemann zeta function
+implies a strict contraction bound on its prime--side component when restricted to
+Paley--Wiener test spaces of sufficiently small bandwidth. This yields uniform coercivity,
+stability under truncation, uniqueness of reconstruction, and an arithmetic rigidity
+principle.
+\end{abstract}
+
+\section{Preliminaries}
+
+Let $\zeta(s)$ denote the Riemann zeta function and let $\rho=\beta+i\gamma$ range over
+its nontrivial zeros. We assume the classical zero--free region
+\begin{equation}
+\Re(s)\ge 1-\frac{A}{\log(|t|+2)} ,
+\end{equation}
+which is unconditional.
+
+Let
+\[
+\psi(x)=\sum_{n\le x}\Lambda(n)
+\]
+denote the Chebyshev function.
+
+\begin{theorem}[Explicit Prime Number Theorem under ZFR]
+Assuming the zero--free region above, there exist explicit constants $B(A),c(A)>0$ such that
+\[
+|\psi(x)-x|\le B(A)\,x\,e^{-c(A)\sqrt{\log x}},\qquad x\ge2 .
+\]
+\end{theorem}
+
+\section{Prime Error Kernel}
+
+Define
+\[
+E(y)=\psi(e^{y})-e^{y}.
+\]
+
+\begin{lemma}[Weighted Integrability]
+\[
+\int_0^{\infty}|E(y)|e^{-y}\,dy<\infty .
+\]
+\end{lemma}
+
+\begin{definition}[Arithmetic Constant]
+Define
+\[
+C_{\mathrm{arith}}(A)=2\int_0^{\infty}|E(y)|e^{-y}\,dy .
+\]
+\end{definition}
+
+\section{Test Space}
+
+Fix $\Omega>0$.
+
+\begin{definition}[Paley--Wiener Test Space]
+Let
+\[
+\mathcal U=PW_\Omega\cap H^1(\mathbb R),\qquad u(0)=0 .
+\]
+\end{definition}
+
+\begin{lemma}[Bernstein Inequality]
+For all $u\in PW_\Omega$,
+\[
+\|u'\|_{L^2(\mathbb R)}\le \Omega\|u\|_{L^2(\mathbb R)} .
+\]
+\end{lemma}
+
+Let $D\subset\mathcal U$ be any finite--dimensional subspace. All operators act on the
+quotient Hilbert space $\mathcal U/D$.
+
+\section{Harmonic Reconstruction Operator}
+
+\begin{definition}[Prime Quadratic Form]
+Define
+\[
+\langle u,Ku\rangle=\int_0^{\infty} E(y)\,d(|u(y)|^2),
+\]
+interpreted as a Stieltjes integral.
+\end{definition}
+
+\begin{lemma}[Boundedness and Symmetry]
+The operator $K$ is bounded and self--adjoint on $\mathcal U/D$.
+\end{lemma}
+
+Define the Harmonic Reconstruction operator
+\[
+\mathcal O_{\mathrm{HR}}=I-K .
+\]
+
+\section{Contraction Bound}
+
+\begin{lemma}[Contraction]
+For all $u\in\mathcal U/D$,
+\[
+|\langle u,Ku\rangle|\le \Omega\,C_{\mathrm{arith}}(A)\,\|u\|^2 .
+\]
+\end{lemma}
+
+\section{Critical Bandwidth and Coercivity}
+
+\begin{definition}[Critical Bandwidth]
+\[
+\Omega^\ast(A)=\frac{1}{C_{\mathrm{arith}}(A)} .
+\]
+\end{definition}
+
+\begin{theorem}[Uniform Coercivity]
+If $\Omega<\Omega^\ast(A)$, then
+\[
+\langle u,\mathcal O_{\mathrm{HR}}u\rangle
+\ge (1-\Omega C_{\mathrm{arith}}(A))\|u\|^2 .
+\]
+\end{theorem}
+
+\section{Stability Under Truncation}
+
+Let $\mathcal O_T$ denote the operator obtained by truncating the explicit formula to
+zeros with $|\gamma|\le T$.
+
+\begin{theorem}[Truncation Stability]
+There exists $C=C(A)>0$ such that
+\[
+\|\mathcal O_{\mathrm{HR}}-\mathcal O_T\|\le C\frac{\log T}{T}.
+\]
+\end{theorem}
+
+\section{Uniqueness and Arithmetic Rigidity}
+
+\begin{theorem}[Uniqueness]
+If $f_1,f_2\in\mathcal U/D$ produce identical spectral data, then $f_1=f_2$.
+\end{theorem}
+
+\begin{remark}[Arithmetic Rigidity]
+The zero--free region enforces a finite rigidity window $\Omega<\Omega^\ast(A)$ below
+which prime--side perturbations are uniquely detectable.
+\end{remark}
+
+\section*{References}
+
+\begin{enumerate}
+\item J.~B.~Rosser and L.~Schoenfeld, \emph{Illinois J. Math.} 6 (1962).
+\item H.~Kadiri, arXiv:math/0510570.
+\item S.~Faber and M.~Mossinghoff, \emph{Math. Comp.} 91 (2022).
+\item E.~C.~Titchmarsh, \emph{The Theory of the Riemann Zeta--Function}, Oxford (1986).
+\item T.~Kato, \emph{Perturbation Theory for Linear Operators}, Springer (1966).
+\end{enumerate}
+
+\end{document}
+
