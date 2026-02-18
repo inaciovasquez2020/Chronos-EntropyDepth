@@ -1,7 +1,16 @@
-- name: Skip Lean (paper-only repo)
-  run: |
-    if [ ! -f lakefile.lean ] && [ ! -f lakefile.toml ]; then
-      echo "No Lake project detected — skipping Lean checks."
-      exit 0
-    fi
+name: chronos-check
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  paper_only_check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Paper-only repository check
+        run: |
+          echo "Chronos-EntropyDepth is paper-only."
+          echo "No Lean or executable artifacts required."
+          exit 0
 
