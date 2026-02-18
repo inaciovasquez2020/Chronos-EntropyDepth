@@ -1,0 +1,135 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{geometry}
+\usepackage{hyperref}
+
+\geometry{margin=1in}
+
+% --- theorem environments ---
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\theoremstyle{plain}
+\newtheorem{theorem}[definition]{Theorem}
+\newtheorem{lemma}[definition]{Lemma}
+\theoremstyle{remark}
+\newtheorem{remark}[definition]{Remark}
+
+% --- macros ---
+\newcommand{\ED}{\mathrm{ED}}
+\newcommand{\TC}{\mathrm{TC}}
+\newcommand{\I}{\mathcal{I}}
+\newcommand{\Hc}{\mathcal{H}}
+
+\title{Finite Capacity and Rigidity:\\
+Geometry as Constraint, Forbidden Residuals, and Closure Principles}
+\author{Inacio F. Vasquez}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We present a finite-capacity rigidity framework in which geometric and
+information-theoretic constraints forbid residual refinement beyond bounded
+depth. The formalism isolates capacity as the controlling invariant and yields
+closure principles applicable to local refinement systems, entropy-depth
+arguments, and admissible verification regimes.
+\end{abstract}
+
+\section{Framework}
+
+We work with refinement processes whose evolution is constrained by bounded
+information injection per step. The guiding principle is that global progress
+cannot exceed local capacity.
+
+\begin{definition}[Refinement Process]
+A \emph{refinement process} is a sequence
+\[
+  \{S_t\}_{t \ge 0}
+\]
+together with update maps
+\[
+  S_{t+1} = \Phi_t(S_t, Z_t),
+\]
+where $Z_t$ is a local transcript satisfying $\I(Z_t) \le C$ for a fixed
+capacity bound $C$.
+\end{definition}
+
+\section{Capacity and Risk}
+
+\begin{definition}[Risk and Success]
+Let $Y$ be a target variable and let $\widehat{Y}$ be an estimator measurable
+with respect to a transcript $\sigma(Z_{\le t})$.
+The \emph{risk} at time $t$ is
+\[
+  R_t := \mathbb{E}\bigl[ \ell(\widehat{Y}, Y) \bigr],
+\]
+for a fixed loss function $\ell$.
+\end{definition}
+
+\section{Entropy--Depth Constraint}
+
+\begin{definition}[Entropy--Depth]
+The entropy--depth of a refinement process is
+\[
+  \ED := \sum_{t \ge 0} \Delta H_t,
+\]
+where $\Delta H_t$ is the entropy reduction achieved at step $t$.
+\end{definition}
+
+\begin{theorem}[Capacity Bound]
+For any refinement process with per-step capacity bound $C$,
+\[
+  \ED \;\le\; \TC := \sum_{t \ge 0} \I(Z_t) \;\le\; O(C \cdot T),
+\]
+where $T$ is the number of refinement steps.
+\end{theorem}
+
+\begin{proof}
+Each refinement step can reduce entropy by at most the information injected at
+that step. Summing over $t$ yields the stated inequality.
+\end{proof}
+
+\section{Forbidden Residuals}
+
+\begin{definition}[Forbidden Residual]
+A residual structure is \emph{forbidden} if it requires entropy reduction
+exceeding $\TC$ under any admissible refinement strategy.
+\end{definition}
+
+\begin{lemma}
+If a target configuration requires $\ED > \TC$, then it is a forbidden residual.
+\end{lemma}
+
+\section{Closure Principle}
+
+\begin{theorem}[Rigidity Closure]
+Under bounded capacity, every admissible refinement process stabilizes after
+$O(\TC)$ steps. No further semantic progress is possible without violating the
+capacity constraint.
+\end{theorem}
+
+\begin{remark}
+This closure principle underlies entropy-depth lower bounds, locality barriers,
+and the impossibility of unbounded adaptive refinement in finite-capacity
+systems.
+\end{remark}
+
+\section{Conclusion}
+
+Finite capacity enforces rigidity. Geometry, information, and refinement depth
+align to forbid residual global structure beyond bounded limits.
+
+\bibliographystyle{plain}
+\begin{thebibliography}{9}
+\bibitem{shannon}
+C. E. Shannon,
+\emph{A Mathematical Theory of Communication},
+Bell System Technical Journal, 1948.
+\end{thebibliography}
+
+\end{document}
+
