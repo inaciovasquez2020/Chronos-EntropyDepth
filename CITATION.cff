@@ -1,11 +1,10 @@
 cff-version: 1.2.0
 message: "If you use this work, please cite it as below."
-title: "Unified Rigidity Framework — Module"
+title: "Chronos-EntropyDepth: Entropy-Based Structural Limits on Computation"
 authors:
-  - orcid: https://orcid.org/0009-0008-8459-3400
   - family-names: Vasquez
     given-names: Inacio F.
-version: 1.0
-year: 2026
-url: "https://github.com/inaciovasquez2020"
+version: "v1"
+date-released: 2026-02-18
+url: "https://github.com/inaciovasquez2020/Chronos-EntropyDepth"
 license: MIT
