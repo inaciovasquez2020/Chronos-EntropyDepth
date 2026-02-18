@@ -1,0 +1,141 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{geometry}
+\usepackage{hyperref}
+\geometry{margin=1in}
+
+% --- Theorem Environments ---
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+
+\theoremstyle{plain}
+\newtheorem{theorem}[definition]{Theorem}
+\newtheorem{remark}[definition]{Remark}
+
+\title{On the Structural Limits of Catalog-Based Scientific Discovery}
+\author{Inacio F. Vasquez \\ Independent Researcher}
+\date{February 2026}
+
+\begin{document}
+\maketitle
+
+\hrule
+\vspace{0.5em}
+\noindent
+\textbf{STATUS:} STATEMENT / CONDITIONAL \\
+\textbf{SCOPE:} Structural limits of catalog-based discovery modeled as an information refinement process. \\
+\textbf{DEPENDENCIES:} Shannon information theory; physical information bounds; refinement dynamics. \\
+\textbf{NON-CLAIMS:} No claim of exhaustion of any scientific field; no claim that discovery halts; no claim of empirical completeness.
+\vspace{0.5em}
+\hrule
+
+\section{Background}
+Scientific discovery increasingly operates through large observational catalogs: astronomical surveys, genomic databases, sensor networks, and automated experiments. In such systems, discovery proceeds via progressive exclusion and refinement within a finite configuration space.
+
+Physical limits on information storage and processing---including thermodynamic irreversibility and finite distinguishability---impose constraints on any realizable discovery process.
+
+\section{Motivation}
+Is there a universal structural limit to the efficiency of discovery in large scientific catalogs?
+
+This manuscript isolates a diminishing-returns law arising from finite information capacity rather than from sociological or technological contingencies.
+
+\section{Intuition}
+Catalog-based discovery refines a finite space of candidate objects using tests that consume physical information. While the total number of discoverable objects is bounded, the physical cost of processing data does not vanish. As refinement progresses, the ratio of newly identified objects to information expended must therefore decay.
+
+\section{Discovery as Refinement}
+\begin{definition}[Discovery System]
+A discovery system is a triple $(\mathcal{D}, \mathcal{C}, \mathcal{T})$ where:
+\begin{itemize}
+\item $\mathcal{D}$ is a finite data stream,
+\item $\mathcal{C}$ is a finite configuration space of candidate objects,
+\item $\mathcal{T}$ is a family of admissible physical tests.
+\end{itemize}
+Discovery proceeds by iteratively excluding configurations, producing a decreasing sequence $\mathcal{C}_k \subseteq \mathcal{C}$.
+\end{definition}
+
+\begin{definition}[Discovery Entropy]
+Let $\mu_k$ be the distribution on $\mathcal{C}_k$. Define
+\[
+H_k = -\sum_{c \in \mathcal{C}_k} \mu_k(c)\log \mu_k(c).
+\]
+\end{definition}
+
+\section{Discovery Capacity Invariant}
+\begin{definition}[Discovery Capacity]
+Define the discovery capacity at step $k$ by
+\[
+\Gamma_k = \frac{\Delta O_k}{\Delta I_k},
+\]
+where $\Delta O_k$ is the number of newly identified objects and $\Delta I_k$ is the physical information gained.
+\end{definition}
+
+\begin{theorem}[Discovery Saturation --- Conditional]
+If tests are locality-preserving and information extraction is physically capacity bounded, then
+\[
+\Gamma_k \to 0 \quad \text{as } k \to \infty .
+\]
+\end{theorem}
+
+\section{Physical Interpretation}
+Discovery is implemented by physical systems with finite energy, entropy, and storage capacity. By thermodynamic irreversibility, the physical cost of processing information cannot vanish, while the number of distinct discoverable objects is finite.
+
+\begin{remark}
+Discovery saturation reflects finite distinguishability rather than empirical exhaustion.
+\end{remark}
+
+\section{Empirical Instantiation: NEOWISE}
+This section tests whether a real survey exhibits the predicted saturation structure.
+
+\subsection*{Data Products}
+NEOWISE single-exposure detections, NEOWISE frame metadata, and the AllWISE stationary-source catalog.
+
+\subsection*{Temporal Partitioning}
+Define
+\[
+k = \left\lfloor \frac{\mathrm{MJD} - 55200.0}{365.25} \right\rfloor + 1, 
+\quad k \in \{1,\dots,11\}.
+\]
+
+\subsection*{Information Proxy}
+Apply signal threshold $\tau = 7$ and define
+\[
+I_k = 4\log_2 |N_k|,
+\]
+where $N_k$ are detections exceeding threshold and the factor $4$ corresponds to measured observables.
+
+\subsection*{Moving Object Yield}
+Let
+\[
+O_k^{\mathrm{new}} = |T_k \setminus \mathrm{Known}(k)|.
+\]
+Empirically, $\Gamma_k$ decreases over time, consistent with discovery saturation.
+
+\section{Failure Modes}
+This framework does not apply if:
+\begin{itemize}
+\item The configuration space $\mathcal{C}$ is effectively infinite.
+\item Discovery employs non-local or oracle-based tests.
+\item Physical information costs are bypassed by external global storage.
+\end{itemize}
+
+\section{Relationship Map}
+This result:
+\begin{itemize}
+\item Formalizes diminishing returns in catalog-based discovery.
+\item Is compatible with continued scientific progress via parameter refinement.
+\item Is orthogonal to sociological or funding-based explanations.
+\end{itemize}
+
+\section*{References}
+\begin{enumerate}
+\item C.\ E.\ Shannon, \emph{A Mathematical Theory of Communication}, Bell System Technical Journal (1948).
+\item R.\ Landauer, \emph{Irreversibility and Heat Generation in the Computing Process}, IBM J.\ Res.\ Dev.\ (1961).
+\item J.\ D.\ Bekenstein, \emph{Information in the Holographic Universe}, Scientific American (2003).
+\item T.\ M.\ Cover and J.\ A.\ Thomas, \emph{Elements of Information Theory}, Wiley (2006).
+\end{enumerate}
+
+\end{document}
+
