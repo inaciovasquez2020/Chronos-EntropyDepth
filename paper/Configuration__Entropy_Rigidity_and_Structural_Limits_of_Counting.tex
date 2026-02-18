@@ -1,0 +1,100 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{geometry}
+\usepackage{hyperref}
+\geometry{margin=1in}
+
+% --- Theorem Environments ---
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+
+\theoremstyle{plain}
+\newtheorem{theorem}[definition]{Theorem}
+\newtheorem{corollary}[definition]{Corollary}
+\newtheorem{remark}[definition]{Remark}
+
+\title{Configuration--Entropy Rigidity and Structural Limits of Counting}
+\author{Inacio F. Vasquez \\ Independent Researcher}
+\date{January 2026}
+
+\begin{document}
+\maketitle
+
+\hrule
+\vspace{0.5em}
+\noindent
+\textbf{STATUS:} STATEMENT / CONDITIONAL \\
+\textbf{SCOPE:} Structural limits on entropy reduction for counting procedures under locality and capacity constraints. \\
+\textbf{DEPENDENCIES:} Shannon entropy; locality-restricted operations; bounded information extraction. \\
+\textbf{NON-CLAIMS:} No finite-time convergence; no algorithmic optimality; no claim of tight constants.
+\vspace{0.5em}
+\hrule
+
+\section{Background}
+Counting arguments and entropy bounds arise across statistical physics, logic, and inference. In many settings, uncertainty is reduced by iterative exclusion of configurations using admissible local tests. Empirically, entropy decreases gradually, and attempts to accelerate this process typically require access to global correlations.
+
+\section{Motivation}
+What structural features prevent counting procedures from collapsing entropy faster than linearly under admissible local operations?
+
+\section{Intuition}
+Local tests extract only bounded information per step. When configuration spaces are rigid, local distinctions cannot be aggregated into global exclusions without resolving many independent constraints. Entropy reduction is therefore uniformly rate-limited.
+
+\section{Configuration Spaces}
+\begin{definition}[Configuration Space]
+A configuration space $\mathcal{C}$ is a finite or countable set of states equipped with a bounded locality structure specifying which configurations can be distinguished by admissible operations.
+\end{definition}
+
+Examples include spin systems, logical assignments, refinement states, and graph colorings.
+
+\section{Entropy and Counting}
+\begin{definition}[Configuration Entropy]
+For a probability distribution $\mu$ on $\mathcal{C}$, define
+\[
+H(\mu) = -\sum_{c\in\mathcal{C}} \mu(c)\log \mu(c).
+\]
+\end{definition}
+
+Counting procedures attempt to reduce entropy by excluding subsets of configurations via admissible tests.
+
+\section{Configuration Rigidity}
+\begin{definition}[Configuration Rigidity]
+A configuration space $\mathcal{C}$ is rigid if local distinctions cannot be aggregated into global exclusions without resolving a linear number of independent local constraints.
+\end{definition}
+
+\section{Configuration--Entropy Rigidity}
+\begin{theorem}[Configuration--Entropy Rigidity]
+Let $\mathcal{C}$ be a rigid configuration space. Suppose counting procedures are locality-preserving and capacity-bounded, extracting at most $O(1)$ bits per step. Then there exists a constant $K>0$ such that for any admissible sequence of counting steps,
+\[
+H_{t+1} \ge H_t - K
+\quad\text{for all } t .
+\]
+\end{theorem}
+
+\begin{corollary}
+No admissible counting scheme can achieve superlinear entropy reduction.
+\end{corollary}
+
+\section{Interpretation}
+\begin{remark}
+This result does not assert that entropy reaches zero in finitely many steps. Infinitely many strict entropy decreases may occur, provided each decrement is sufficiently small.
+\end{remark}
+
+\section{Relationship Map}
+This rigidity principle:
+\begin{itemize}
+\item explains stability of sharp counting bounds,
+\item applies across physics, logic, and inference,
+\item provides a counting analogue of EntropyDepth-type temporal bounds.
+\end{itemize}
+
+\section*{References}
+\begin{enumerate}
+\item T.\ M.\ Cover and J.\ A.\ Thomas, \emph{Elements of Information Theory}, Wiley (2006).
+\item B.\ Weisfeiler and A.\ Leman, \emph{The Reduction of a Graph to Canonical Form}, NTI Series (1968).
+\end{enumerate}
+
+\end{document}
+
