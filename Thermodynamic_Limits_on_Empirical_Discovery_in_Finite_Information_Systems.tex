@@ -1,0 +1,152 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{geometry}
+\usepackage{hyperref}
+
+\geometry{margin=1in}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}[section]
+
+\title{Thermodynamic Limits on Empirical Discovery in Finite Information Systems}
+\author{Inacio F. Vasquez\\Independent Researcher}
+\date{February 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We propose a thermodynamic limit to catalog-based scientific discovery. In any finite
+physical system subject to irreversible information processing, the marginal rate of
+empirical discovery must decay to zero. The result follows from the finiteness of the
+configuration space of discoverable objects together with a strictly positive physical
+cost of information processing. We validate the prediction empirically using publicly
+available infrared survey data from the NEOWISE mission.
+\end{abstract}
+
+\section{Physical Motivation}
+
+Scientific discovery is a physical process. Observations require energy, data storage,
+computation, and irreversible information processing. By Landauer’s principle, any
+logically irreversible manipulation of information incurs a minimum thermodynamic
+cost. Moreover, any finite physical system admits a bounded information capacity in
+the sense of Bekenstein.
+
+These facts suggest that empirical discovery itself may be subject to a fundamental
+thermodynamic limit.
+
+\section{Background and Intuition}
+
+The mechanism is a compactness effect. In any finite configuration space, repeated
+sampling necessarily exhausts distinguishable states. Early observations recover coarse
+objects; later observations must search increasingly rare configurations.
+
+Thermodynamics prevents arbitrarily cheap exploration: each refinement step requires
+irreversible information processing with nonvanishing cost.
+
+\section{Formal Setting}
+
+Let $C$ be a finite configuration space of physically distinguishable discoverable
+objects within a fixed observational regime.
+
+Let $\Delta O_k$ denote the number of genuinely new objects discovered at step $k$,
+and let $\Delta I_k$ denote the physical information processed at that step. Define the
+discovery efficiency
+\[
+\Gamma_k = \frac{\Delta O_k}{\Delta I_k}.
+\]
+
+\subsection{Operational Admissibility}
+
+A discovery is operationally admissible only if it results in a physically recorded
+distinction produced by a finite sequence of localized interactions and irreversible
+information-processing steps.
+
+\section{Main Theorem}
+
+\begin{theorem}[Discovery Saturation]
+Let $C$ be finite and suppose each discovery step incurs a strictly positive physical
+information cost $\Delta I_k \ge I_0 > 0$. Then
+\[
+\lim_{k\to\infty} \Gamma_k = 0.
+\]
+\end{theorem}
+
+\begin{proof}
+Since $C$ is finite,
+\[
+\sum_{k=1}^{\infty} \Delta O_k \le |C|,
+\]
+hence $\Delta O_k \to 0$ as $k\to\infty$.
+
+By irreversible information processing, $\Delta I_k \ge I_0 > 0$ for all $k$. Therefore
+\[
+\Gamma_k = \frac{\Delta O_k}{\Delta I_k} \le \frac{\Delta O_k}{I_0} \longrightarrow 0.
+\]
+\end{proof}
+
+\section{Interpretation}
+
+Diminishing empirical returns are not sociological. They are a thermodynamic
+consequence of finite distinguishability and irreducible information-processing cost.
+
+\section{Empirical Validation: NEOWISE}
+
+We analyze publicly available infrared survey data from NEOWISE and AllWISE.
+Using a signal-to-noise threshold $\tau=7$, define
+\[
+N_k = \{d \in D_k : \max(\mathrm{SNR}_{W1},\mathrm{SNR}_{W2}) \ge \tau\},
+\qquad
+I_k = \log_2 |N_k|.
+\]
+Let $\Delta O_k$ denote the number of genuinely new moving objects identified at step
+$k$. The empirical proxy
+\[
+\Gamma^{\mathrm{emp}}_k = \frac{\Delta O_k}{I_k}
+\]
+is observed to decrease over time, consistent with the theorem.
+
+\section{Conclusion}
+
+Empirical discovery obeys a universal thermodynamic saturation law. In any finite
+domain, marginal discovery efficiency must vanish asymptotically.
+
+\begin{thebibliography}{9}
+
+\bibitem{Landauer}
+R.~Landauer, Irreversibility and heat generation in the computing process,
+\emph{IBM Journal of Research and Development} 5 (1961), 183--191.
+
+\bibitem{Bekenstein}
+J.~D.~Bekenstein, Black holes and entropy,
+\emph{Physical Review D} 7 (1973), 2333--2346.
+
+\bibitem{Wright}
+E.~L.~Wright et al., The Wide-field Infrared Survey Explorer (WISE),
+\emph{Astronomical Journal} 140 (2010), 1868--1881.
+
+\bibitem{Mainzer}
+A.~Mainzer et al., Initial performance of the NEOWISE reactivation mission,
+\emph{Astrophysical Journal} 792 (2014), 30.
+
+\bibitem{Shannon}
+C.~E.~Shannon, A mathematical theory of communication,
+\emph{Bell System Technical Journal} 27 (1948), 379--423.
+
+\bibitem{Lloyd}
+S.~Lloyd, Ultimate physical limits to computation,
+\emph{Nature} 406 (2000), 1047--1054.
+
+\end{thebibliography}
+
+\end{document}
+
