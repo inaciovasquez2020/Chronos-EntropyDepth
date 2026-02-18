@@ -1,0 +1,177 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{geometry}
+\usepackage{hyperref}
+
+\geometry{margin=1in}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{remark}[definition]{Remark}
+\newtheorem{assumption}[definition]{Assumption}
+
+\theoremstyle{plain}
+\newtheorem{theorem}[definition]{Theorem}
+\newtheorem{corollary}[definition]{Corollary}
+
+\title{The Capacity--Depth Theorem:\\ Universal Lower Bounds on Adaptive Refinement}
+\author{Inacio F. Vasquez\\Independent Researcher}
+\date{February 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We prove a universal information-theoretic lower bound on the number of steps required
+by any adaptive refinement process to reduce uncertainty below a prescribed threshold.
+The bound depends only on the initial entropy and the maximum per-step information
+capacity. The result is domain-independent and yields sharp lower bounds for deterministic
+computation, stochastic inference, physical relaxation, and sequential data estimation.
+\end{abstract}
+
+\section{Definitions}
+
+\begin{definition}[State]
+A state is a discrete random variable $S$ defined on a probability space $(\Omega,\mathcal F,\mathbb P)$
+with finite entropy.
+\end{definition}
+
+\begin{definition}[Entropy]
+The entropy of $S$ is
+\[
+H(S) = -\sum_x \mathbb P(S=x)\log_2 \mathbb P(S=x).
+\]
+\end{definition}
+
+\begin{definition}[Refinement Process]
+A refinement process is a sequence of random variables $(S_t)_{t\ge 0}$ such that
+\[
+\mathbb E[H(S_{t+1})\mid S_t] \le H(S_t).
+\]
+\end{definition}
+
+\begin{definition}[Deterministic Refinement]
+A refinement process is deterministic if
+\[
+S_{t+1}=f_t(S_t)
+\]
+for measurable functions $f_t$.
+\end{definition}
+
+\begin{definition}[Capacity]
+The capacity of a refinement process is a constant $C>0$ such that
+\[
+\mathbb E[H(S_t)-H(S_{t+1})]\le C
+\quad\text{for all }t.
+\]
+\end{definition}
+
+\begin{definition}[Resolution Depth]
+For a target entropy level $\varepsilon\ge 0$, the resolution depth is
+\[
+T_\varepsilon=\min\{t\ge 0:\mathbb E[H(S_t)]\le\varepsilon\}.
+\]
+\end{definition}
+
+\begin{remark}
+One may define a strong resolution depth
+\[
+T^{(\delta)}_\varepsilon=\min\{t\ge 0:\mathbb P(H(S_t)>\varepsilon)\le\delta\},
+\]
+and relate it to $T_\varepsilon$ via concentration inequalities.
+\end{remark}
+
+\section{The Capacity--Depth Theorem}
+
+\begin{theorem}[Capacity--Depth Lower Bound]
+Let $(S_t)_{t\ge 0}$ be any refinement process with initial entropy
+$H_0=\mathbb E[H(S_0)]$ and capacity $C>0$. Then for any $\varepsilon\ge 0$,
+\[
+T_\varepsilon \ge \left\lceil \frac{H_0-\varepsilon}{C}\right\rceil .
+\]
+\end{theorem}
+
+\section{Proof}
+
+By the capacity condition,
+\[
+\mathbb E[H(S_{t+1})] \ge \mathbb E[H(S_t)]-C.
+\]
+Iterating,
+\[
+\mathbb E[H(S_T)] \ge H_0-TC.
+\]
+Resolution requires $\mathbb E[H(S_{T_\varepsilon})]\le\varepsilon$, hence
+\[
+\varepsilon \ge H_0-T_\varepsilon C
+\quad\Rightarrow\quad
+T_\varepsilon \ge \frac{H_0-\varepsilon}{C}.
+\]
+Taking the ceiling yields the result.
+
+\begin{remark}
+The bound is tight: equality is achieved when each refinement step extracts exactly
+$C$ bits of independent information.
+\end{remark}
+
+\begin{corollary}[No Free Lunch]
+Any adaptive process resolving a space of effective size $2^{H_0}$ below entropy
+$\varepsilon$ requires at least $(H_0-\varepsilon)/C$ steps.
+\end{corollary}
+
+\section{Conditional Upper Bound}
+
+\begin{assumption}[Minimum Information Gain]
+There exists $c_{\min}>0$ such that
+\[
+\mathbb E[H(S_t)-H(S_{t+1})]\ge c_{\min}
+\quad\text{for all }t.
+\]
+\end{assumption}
+
+\begin{theorem}[Conditional Efficiency Bound]
+Under the Minimum Information Gain assumption,
+\[
+\frac{H_0-\varepsilon}{C}\le T_\varepsilon \le \frac{H_0-\varepsilon}{c_{\min}}.
+\]
+\end{theorem}
+
+\section{Instantiations}
+
+\subsection{Computation (Search)}
+For search over a set of size $N=2^n$, $H_0=n$ and $C\le 1$, hence
+\[
+T_\varepsilon \ge n-\varepsilon,
+\]
+matching decision-tree lower bounds.
+
+\subsection{Physics (Relaxation)}
+Let $S_t$ be the macrostate of a relaxing physical system. Then
+\[
+T_\varepsilon \ge \frac{H_0-\varepsilon}{\sup_t \mathbb E[H(S_t)-H(S_{t+1})]},
+\]
+linking refinement depth to entropy production limits (Landauer, Bekenstein).
+
+\subsection{Data (Sequential Estimation)}
+For a streaming estimator with memory $M$ bits, $C\le M$, hence
+\[
+T_\varepsilon \ge \frac{H_0-\varepsilon}{M}.
+\]
+
+\section{Canonical Statement}
+Any adaptive refinement process with capacity $C$ requires at least $(H_0-\varepsilon)/C$
+steps to reduce uncertainty below $\varepsilon$.
+
+\begin{thebibliography}{9}
+\bibitem{CoverThomas}
+T.~M.~Cover and J.~A.~Thomas, \emph{Elements of Information Theory}, Wiley, 2006.
+\bibitem{Landauer}
+R.~Landauer, Irreversibility and heat generation in the computing process,
+\emph{IBM J. Res. Dev.} 5 (1961), 183--191.
+\end{thebibliography}
+
+\end{document}
+
