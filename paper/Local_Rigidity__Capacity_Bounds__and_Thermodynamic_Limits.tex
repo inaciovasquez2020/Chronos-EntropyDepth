@@ -1,0 +1,150 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{geometry}
+\usepackage{hyperref}
+\geometry{margin=1in}
+
+\title{Local Rigidity, Capacity Bounds, and Thermodynamic Limits}
+\author{Inacio F. Vasquez}
+\date{January 2026}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+
+\theoremstyle{plain}
+\newtheorem{theorem}[definition]{Theorem}
+\newtheorem{lemma}[definition]{Lemma}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We study universal obstructions to inference and control through local interfaces
+under finite informational capacity. Across finite model theory, algorithms, and
+physics, local mechanisms are routinely used to extract global structure. Under
+minimal admissibility assumptions—finite transcript capacity and thermodynamic
+calibration—any such mechanism satisfies a sharp rigidity principle: whenever
+information demand exceeds capacity, either irreducible error persists or a
+detectable regime-exit signature must occur. This yields a universal ceiling on
+extractable mutual information and formalizes the Viotropic Wall: beyond capacity,
+additional internal structure becomes operationally null. All conditional statements
+are explicitly labeled.
+\end{abstract}
+
+\section{Background and Motivation}
+
+Locality organizes inference in multiple disciplines. In finite model theory,
+bounded-variable logics and Ehrenfeucht--Fra\"{\i}ss\'{e} games limit global inference
+from neighborhoods. In computation, refinement algorithms fail on instances
+requiring long-range consistency. In physics, measurement is mediated by finite
+interfaces constrained by energy, geometry, and entropy production.
+
+\section{Model: Interfaces and Transcripts}
+
+\begin{definition}[Interface]
+Let $X$ be an unknown system state. An interface $I$ produces an interactive transcript
+\[
+Y_{1:T}=(Y_1,\dots,Y_T)
+\]
+according to update rules
+\[
+Y_t=\Phi_t(\mathrm{Obs}_t(X),Y_{<t}),
+\]
+with finite internal memory.
+\end{definition}
+
+\begin{definition}[Transcript Capacity]
+The transcript capacity over horizon $T$ is
+\[
+TC(T):=\sup I(X;Y_{1:T}),
+\]
+where the supremum ranges over admissible strategies of $I$.
+\end{definition}
+
+\paragraph{Finite Capacity (FC).}
+For any declared admissible regime, $TC(T)<\infty$ and scales at most linearly in $T$.
+
+\section{Landauer Calibration}
+
+\paragraph{Landauer Calibration.}
+If the interface operates at temperature $\Theta$ and dissipates heat rate $\dot Q(t)$,
+then
+\[
+TC(T)\le \frac{1}{k_B\Theta\ln 2}\int_0^T \dot Q(t)\,dt .
+\]
+
+\begin{lemma}[Landauer Mutual Information Ceiling]
+For any interactive channel implemented by a finite-memory interface,
+\[
+I(X;Y_{1:T})\le \frac{1}{k_B\Theta\ln 2}\int_0^T \dot Q(t)\,dt .
+\]
+\end{lemma}
+
+\begin{proof}
+$I(X;Y_{1:T})\le H(Y_{1:T})\le H(M_T)$, where $M_T$ is the internal memory.
+Each logically irreversible update erases at least one bit and dissipates
+$\ge k_B\Theta\ln 2$ heat. Summing over updates yields the bound.
+\end{proof}
+
+\section{Demand--Capacity Rigidity}
+
+\begin{definition}[Information Demand]
+Let $\mathrm{Dem}_\eta(T)$ denote the mutual information required to achieve task
+accuracy $\eta$ by time $T$.
+\end{definition}
+
+\begin{theorem}[Rigidity Dichotomy]
+Assume \textbf{FC}. If $\mathrm{Dem}_\eta(T)>TC(T)$, then no admissible strategy
+achieves accuracy $\eta$ by time $T$. Any apparent success implies a regime exit
+witnessed by at least one of:
+(i) transcript escape (nonlocal information),
+(ii) defect persistence (certified information gap),
+(iii) instability (variance blow-up).
+\end{theorem}
+
+\section{Viotropic Wall}
+
+\begin{definition}[Operational Mutual Information]
+For any observable $O=f(Y_{1:T})$,
+\[
+I_{\mathrm{op}}(X;O):=H(O)-H(O\mid X).
+\]
+\end{definition}
+
+\begin{theorem}[Viotropic Wall]
+There exists $\kappa>0$ such that
+\[
+H_{\mathrm{extractable}}>\kappa\,TC(T)\;\Rightarrow\; I_{\mathrm{op}}(X;O)=0 .
+\]
+Thus beyond capacity, internal structure becomes observationally null.
+\end{theorem}
+
+\section{Examples}
+
+\paragraph{Finite Model Theory.}
+For bounded-degree cycle-expanders $G_n$, the number of FO$^k_r$ local types is finite.
+Recovering a global parity requires $\Omega(n)$ bits, while any FO$^k$ interface has
+$TC(T)=O(1)$, forcing regime exit.
+
+\paragraph{Physical Measurement.}
+A finite-temperature sensor erasing one bit per timestep dissipates $k_B\Theta\ln 2$.
+Thus $TC(T)=T$. Reconstructing an $N$-bit state with $T<N$ violates capacity.
+
+\section{Scope}
+
+All results are regime statements: they apply under declared locality, energy, and
+bandwidth constraints. Violations manifest as forbidden residuals.
+
+\begin{thebibliography}{9}
+\bibitem{Libkin} L.~Libkin, \emph{Elements of Finite Model Theory}, Springer, 2004.
+\bibitem{Immerman} N.~Immerman, \emph{Descriptive Complexity}, Springer, 1999.
+\bibitem{CoverThomas} T.~Cover and J.~Thomas, \emph{Elements of Information Theory}, Wiley, 2006.
+\bibitem{Landauer} R.~Landauer, \emph{IBM J. Res. Dev.} 5 (1961), 183--191.
+\bibitem{Bekenstein} J.~D.~Bekenstein, \emph{Phys. Rev. D} 23 (1981), 287--298.
+\end{thebibliography}
+
+\end{document}
+
