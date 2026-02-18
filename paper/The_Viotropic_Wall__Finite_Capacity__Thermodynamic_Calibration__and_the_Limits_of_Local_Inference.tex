@@ -1,0 +1,167 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{geometry}
+\usepackage{hyperref}
+
+\geometry{margin=1in}
+
+\title{The Viotropic Wall: Finite Capacity, Thermodynamic Calibration,\\
+and the Limits of Local Inference}
+\author{Inacio F. Vasquez}
+\date{January 2026}
+
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{assumption}{Assumption}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Recent critiques of machine reasoning systems emphasize a recurring phenomenon:
+increasing internal complexity does not translate into improved global understanding.
+We formalize this observation as a universal rigidity principle.
+Under three axioms—finite transcript capacity, thermodynamic calibration,
+and informational monotonicity—we prove the existence of a sharp boundary,
+the \emph{Viotropic Wall}, beyond which additional internal structure becomes
+operationally invisible to any local observer.
+The result applies uniformly across computational, physical, and biological
+inference systems and yields a diagnostic protocol (IC3) for detecting regime
+violations.
+\end{abstract}
+
+\section{Introduction and Motivation}
+
+Local inference dominates modern science: algorithms refine hypotheses through
+partial observations, physical instruments sample systems through bounded
+interfaces, and biological agents adapt via limited sensory channels.
+Yet in each domain the same obstruction appears: certain global structures
+cannot be reliably inferred regardless of internal sophistication.
+
+In finite model theory this manifests as locality theorems and bounded-variable
+logics. In computation it appears as transcript and memory bounds.
+In physics it is enforced by thermodynamic limits on information flow.
+This paper isolates the common invariant underlying these phenomena.
+
+\section{Interfaces and Transcripts}
+
+\begin{definition}[Interface]
+An interface mediates interaction between an unknown system state $X$
+and an observer, producing a transcript $Y_{1:T}$ via admissible
+observation rules.
+\end{definition}
+
+\begin{definition}[Transcript Capacity]
+The transcript capacity of an interface over horizon $T$ is
+\[
+TC(T) := \sup I(X; Y_{1:T}).
+\]
+\end{definition}
+
+\section{Axioms}
+
+\begin{assumption}[Finite Capacity (FC)]
+For any declared admissible regime, $TC(T) < \infty$ and
+$TC(T) = O(T)$.
+\end{assumption}
+
+\begin{assumption}[Landauer Calibration]
+If the interface dissipates heat at rate $\dot Q(t)$ at temperature $\Theta$, then
+\[
+TC(T) \le \frac{1}{k_B \Theta \ln 2}
+\int_0^T \dot Q(t)\,dt .
+\]
+\end{assumption}
+
+\begin{assumption}[Informational Monotonicity (Mon)]
+For any admissible observer,
+\[
+H_{\mathrm{extractable}} \le TC(T).
+\]
+\end{assumption}
+
+\section{The Viotropic Wall}
+
+\begin{definition}[Operational Mutual Information]
+For any observable $O$ derived from an admissible transcript, define
+\[
+I_{\mathrm{op}}(X;O) := H(O) - H(O \mid X).
+\]
+\end{definition}
+
+\begin{theorem}[Viotropic Wall]
+There exists $\kappa > 0$ such that for any admissible regime,
+\[
+\mathrm{Dem}_\eta(T) > \kappa \cdot TC(T)
+\quad \Longrightarrow \quad
+I_{\mathrm{op}}(X;O) = 0 .
+\]
+\end{theorem}
+
+\begin{proof}
+By Informational Monotonicity,
+$H_{\mathrm{extractable}} \le TC(T)$.
+If $\mathrm{Dem}_\eta(T) > \kappa TC(T)$, then no admissible transcript
+can encode sufficient information to resolve $X$ to accuracy $\eta$.
+Any observable $O$ derived from the transcript is therefore statistically
+independent of $X$, yielding $I_{\mathrm{op}}(X;O)=0$.
+\end{proof}
+
+\section{IC3 Diagnostic Protocol}
+
+We define the \emph{Information--Capacity Calorimeter} (IC3)
+as a forensic test of admissibility:
+
+\begin{enumerate}
+\item Measure empirical $TC(\tilde T)$ from transcript statistics.
+\item Measure thermodynamic capacity $TC_{\mathrm{therm}}(T)$ from heat dissipation.
+\item Enforce monotonicity: $H_{\mathrm{extractable}} \le TC(\tilde T)$.
+\item Test demand: $\mathrm{Dem}_\eta(T) > \kappa TC(\tilde T)$.
+\item Probe outcome: estimate $I_{\mathrm{op}}(X;O)$.
+\end{enumerate}
+
+If $I_{\mathrm{op}} > 0$ under steps (1)--(4), a regime exit is certified.
+
+\section{Discussion}
+
+The Viotropic Wall is an informational event horizon.
+Beyond it, internal structure may exist but cannot influence any admissible
+observation.
+The principle unifies locality theorems in logic, transcript bounds in
+computation, and entropy limits in physics.
+
+\section{Conclusion}
+
+Under minimal and physically interpretable axioms, global inference is sharply
+bounded.
+Over-demanded information is not merely noisy; it is operationally extinct.
+
+\begin{thebibliography}{9}
+
+\bibitem{Libkin}
+L.~Libkin,
+\emph{Elements of Finite Model Theory},
+Springer, 2004.
+
+\bibitem{Immerman}
+N.~Immerman,
+\emph{Descriptive Complexity},
+Springer, 1999.
+
+\bibitem{CoverThomas}
+T.~Cover and J.~Thomas,
+\emph{Elements of Information Theory},
+Wiley, 2006.
+
+\bibitem{Landauer}
+R.~Landauer,
+Irreversibility and heat generation in the computing process,
+\emph{IBM Journal of Research and Development} 5 (1961).
+
+\end{thebibliography}
+
+\end{document}
+
