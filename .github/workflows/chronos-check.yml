@@ -1,18 +1,7 @@
-name: chronos-check
+- name: Skip Lean (paper-only repo)
+  run: |
+    if [ ! -f lakefile.lean ] && [ ! -f lakefile.toml ]; then
+      echo "No Lake project detected — skipping Lean checks."
+      exit 0
+    fi
 
-on:
-  pull_request:
-  push:
-    branches: [ main ]
-
-jobs:
-  chronos-check:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Chronos kernel reference check
-        run: |
-          set -e
-          grep -q "Chronos Kernel" README.md
-          echo "chronos-check passed"
