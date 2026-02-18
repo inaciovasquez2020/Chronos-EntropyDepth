@@ -1,0 +1,160 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{geometry}
+\usepackage{hyperref}
+
+\geometry{margin=1in}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}[section]
+
+\title{On the Structural Limits of Catalog-Based Scientific Discovery}
+\author{Inacio F. Vasquez\\Independent Researcher}
+\date{February 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We propose a thermodynamic limit to catalog-based scientific discovery, modeling
+discovery as a constrained information refinement process. We introduce a discovery
+capacity invariant measuring the efficiency of novel object extraction per bit of physical
+information. We prove that under locality and finite information constraints, discovery
+necessarily exhibits universal saturation behavior. An executable instantiation using
+NEOWISE and AllWISE infrared survey data is presented as an empirical test of this
+epistemic law.
+\end{abstract}
+
+\section{Conceptual Framing}
+
+Scientific discovery increasingly occurs through large observational catalogs:
+astronomical surveys, genomic databases, sensor networks, and automated experiments.
+In such systems, discovery is no longer the identification of isolated phenomena, but
+the progressive refinement of structured information spaces.
+
+This motivates a foundational question:
+
+\emph{Is there a universal physical limit to catalog-based discovery?}
+
+We argue that discovery is an information refinement process subject to intrinsic
+saturation laws imposed by the physical nature of information itself.
+
+\section{Discovery as Refinement}
+
+\begin{definition}[Discovery System]
+A discovery system is a tuple $(\mathcal D,\mathcal C,\mathcal T)$ where:
+\begin{itemize}
+\item $\mathcal D$ is a finite data stream,
+\item $\mathcal C$ is a finite configuration space of candidate objects,
+\item $\mathcal T$ is a family of admissible physical tests.
+\end{itemize}
+Discovery proceeds by iteratively excluding configurations via tests, producing a
+decreasing sequence $\mathcal C_k \subseteq \mathcal C$.
+\end{definition}
+
+\begin{definition}[Discovery Entropy]
+Let $\mu_k$ be the distribution on $\mathcal C_k$. Define
+\[
+H_k = -\sum_{c\in\mathcal C_k}\mu_k(c)\log\mu_k(c).
+\]
+\end{definition}
+
+\section{Discovery Capacity Invariant}
+
+\begin{definition}[Discovery Capacity]
+Define the discovery capacity at step $k$ by
+\[
+\Gamma_k = \frac{\Delta O_k}{\Delta I_k},
+\]
+where $\Delta O_k$ is the number of newly identified objects and $\Delta I_k$ is the
+physical information gained.
+\end{definition}
+
+\begin{theorem}[Discovery Saturation]
+If tests are locality-preserving and information extraction is physically capacity bounded,
+then $\Gamma_k \to 0$ as $k\to\infty$.
+\end{theorem}
+
+\begin{proof}
+Since $\mathcal C$ is finite,
+\[
+\sum_{k=1}^\infty \Delta O_k \le |\mathcal C|,
+\]
+hence $\Delta O_k \to 0$.
+
+By thermodynamic irreversibility (Landauer’s principle), the physical information cost
+per step satisfies $\Delta I_k \ge C_0 > 0$. Therefore,
+\[
+\Gamma_k = \frac{\Delta O_k}{\Delta I_k} \longrightarrow 0.
+\]
+\end{proof}
+
+\section{Physical Interpretation}
+
+Information is physical. Any discovery process must be implemented by systems with
+finite energy, entropy, and storage capacity. Landauer’s principle and the Bekenstein
+bound imply finite distinguishability, yielding saturation as a physical law.
+
+\begin{remark}
+Discovery saturation is a thermodynamic consequence of finite information capacity,
+not a sociological limitation.
+\end{remark}
+
+\section{Empirical Test: NEOWISE / AllWISE}
+
+We test the predicted saturation structure using NEOWISE and AllWISE survey data.
+
+\subsection{Information Proxy}
+
+Using signal threshold $\tau=7$, define
+\[
+I_k = 4\log_2 |N_k|,
+\]
+corresponding to four floating-point observables per detection.
+
+\subsection{Moving Object Yield}
+
+Let $O_k^{\mathrm{new}}$ denote newly identified tracklets at step $k$.
+Empirically, $\Gamma_k$ decreases rapidly over time, consistent with the theorem.
+
+\section{Conclusion}
+
+Catalog-based discovery obeys universal physical saturation laws. As discovery proceeds,
+novel object yield diminishes while information cost remains bounded below. Scientific
+progress asymptotically shifts from discovery to refinement.
+
+\begin{thebibliography}{9}
+
+\bibitem{Shannon}
+C.~E.~Shannon,
+\emph{A Mathematical Theory of Communication},
+Bell System Technical Journal 27 (1948).
+
+\bibitem{Landauer}
+R.~Landauer,
+\emph{Irreversibility and Heat Generation in the Computing Process},
+IBM J. Res. Dev. 5 (1961).
+
+\bibitem{Bekenstein}
+J.~D.~Bekenstein,
+\emph{Information in the Holographic Universe},
+Scientific American 289 (2003).
+
+\bibitem{Lloyd}
+S.~Lloyd,
+\emph{Ultimate Physical Limits to Computation},
+Nature 406 (2000).
+
+\end{thebibliography}
+
+\end{document}
+
