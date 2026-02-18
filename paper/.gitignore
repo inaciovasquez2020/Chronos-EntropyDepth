@@ -9,6 +9,6 @@
 *.fdb_latexmk
 *.synctex.gz
 
-# PDFs (generated)
+# Generated PDFs
 paper/*.pdf
 
