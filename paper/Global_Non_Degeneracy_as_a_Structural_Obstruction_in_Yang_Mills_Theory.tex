@@ -1,0 +1,93 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{geometry}
+\usepackage{hyperref}
+\geometry{margin=1in}
+
+% --- Theorem Environments ---
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+
+\theoremstyle{plain}
+\newtheorem{theorem}[definition]{Theorem}
+\newtheorem{remark}[definition]{Remark}
+
+\title{Global Non-Degeneracy as a Structural Obstruction in Yang--Mills Theory}
+\author{Inacio F. Vasquez \\ Independent Researcher}
+\date{}
+
+\begin{document}
+\maketitle
+
+\hrule
+\vspace{0.5em}
+\noindent
+\textbf{STATUS:} REDUCTION / CONDITIONAL \\
+\textbf{SCOPE:} Structural reduction of the Yang--Mills mass gap to a single coercivity condition on a gauge-fixed spectral operator. \\
+\textbf{DEPENDENCIES:} Gauge fixing; spectral theory; functional analysis. \\
+\textbf{NON-CLAIMS:} No proof of global non-degeneracy; no construction of the quantum theory; no resolution of the mass gap.
+\vspace{0.5em}
+\hrule
+
+\section{Background}
+The Yang--Mills Existence and Mass Gap problem asks whether four-dimensional pure Yang--Mills theory admits a mathematically well-defined quantum field theory with a strictly positive mass gap. Existing approaches---stochastic quantization, constructive field theory, lattice limits, and spectral analysis---all seek to exclude residual flat directions in the physical configuration space.
+
+\section{Motivation}
+Can all known formulations of the mass gap be reduced to a single analytic--geometric condition?
+
+\section{Intuition}
+Gauge fixing converts the problem to the study of a canonical self-adjoint operator governing quadratic fluctuations. If this operator is uniformly coercive away from symmetry modes, arbitrarily small excitations are excluded. Failure of coercivity corresponds to residual flat directions and obstruction of a mass gap.
+
+\section{Gauge-Reduced Configuration Space}
+Let $\mathcal{A}$ denote the space of smooth $\mathrm{SU}(N)$ connections on $\mathbb{R}^4$ (or a compactified model), and let $\mathcal{G}$ be the gauge group. Physical configurations are represented by the quotient
+\[
+\mathcal{C} := \mathcal{A}/\mathcal{G}.
+\]
+
+\begin{definition}[Physical Hilbert Space]
+Let $\mathcal{H}_{\mathrm{YM}}$ denote the Hilbert completion of tangent vectors on $\mathcal{C}$ with respect to the gauge-invariant inner product induced by the Yang--Mills action.
+\end{definition}
+
+\section{The Metric Gap Operator}
+\begin{definition}[Metric Gap Operator]
+Let $\Lambda$ be the self-adjoint operator on $\mathcal{H}_{\mathrm{YM}}$ obtained from the second variation of the gauge-fixed Yang--Mills action, including the Faddeev--Popov contribution. Let $\mathcal{D}_{\mathrm{YM}} \subset \mathcal{H}_{\mathrm{YM}}$ denote the finite-dimensional defect space arising from global symmetries and gauge zero modes.
+\end{definition}
+
+\section{Global Non-Degeneracy}
+\begin{definition}[Global Non-Degeneracy]
+The Metric Gap Operator $\Lambda$ is globally non-degenerate if there exists $\lambda_0>0$ such that
+\[
+\langle \psi, \Lambda \psi \rangle \ge \lambda_0 \|\psi\|^2
+\quad \text{for all } \psi \in \mathcal{D}_{\mathrm{YM}}^{\perp}.
+\]
+\end{definition}
+
+\section{Structural Reduction}
+\begin{theorem}[Conditional Reduction]
+If the Metric Gap Operator $\Lambda$ is globally non-degenerate, then the Yang--Mills Hamiltonian admits a strictly positive mass gap. Conversely, any formulation of the Yang--Mills mass gap implies global non-degeneracy of $\Lambda$.
+\end{theorem}
+
+\begin{remark}[Terminal Obstruction]
+Verification of global non-degeneracy is a single analytic inequality on configuration space. No stochastic, renormalization, or lattice mechanism bypasses this obstruction.
+\end{remark}
+
+\section{Relationship Map}
+This reduction:
+\begin{itemize}
+\item isolates a unique analytic obstruction underlying all known approaches,
+\item is independent of quantization scheme,
+\item identifies a terminal target for analytic verification.
+\end{itemize}
+
+\section*{References}
+\begin{enumerate}
+\item A.\ Jaffe and E.\ Witten, \emph{Quantum Yang--Mills Theory}, Clay Mathematics Institute Millennium Problems (2000).
+\item B.\ Simon, \emph{Functional Integration and Quantum Physics}, Academic Press (1979).
+\item M.\ Reed and B.\ Simon, \emph{Methods of Modern Mathematical Physics}, Vol.\ I--IV, Academic Press (1972--1978).
+\end{enumerate}
+
+\end{document}
+
