@@ -17,6 +17,16 @@ This repository is a registered module of the Vasquez Index. Stable references, 
 * **Stability:** Refer to the Vasquez Index for the latest stable DOI and version history.
 * **Infrastructure:** [scientific-infrastructure](https://github.com/inaciovasquez2020/scientific-infrastructure)
 
+## Status (2026)
+
+- FO^k locality is conditionally closed via Configuration Pumping.
+- EF Cycle–Linkage and related locality traps are retired.
+- Chronos/EntropyDepth results do not depend on XYSTEM.
+- The sole remaining analytic obstacle for URF_law3/XYSTEM is the
+  Clause Contraction Lemma (CCL), tracked in urf-axioms.
+
+All claims here are stated independently of CCL/XYSTEM unless explicitly labeled.
+
 ## CI Status
 ![chronos-check](https://github.com/inaciovasquez2020/Chronos-EntropyDepth/actions/workflows/chronos-check.yml/badge.svg)
 
