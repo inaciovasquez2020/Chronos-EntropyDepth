@@ -102,3 +102,21 @@ MIT
 
 Inacio F. Vasquez  
 Independent Researcher
+
+## Chronos Certification (Defined)
+
+This repository supports a defined but unreleased certification layer.
+
+Status:
+- Defined
+- Not released
+- No signed claims
+
+Scope:
+- Structural definitions and bounds only
+- Deterministic, audit-ready artifacts
+
+Non-scope:
+- No Clay problem resolution
+- No algorithmic prescriptions
+- No performance claims beyond EntropyDepth bounds
