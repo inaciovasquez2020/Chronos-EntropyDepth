@@ -3,30 +3,30 @@ name: chronos-check
 on:
   push:
     paths:
-      - "**/*.lean"
-      - "lean-toolchain"
       - ".github/workflows/chronos-check.yml"
+      - "**/*.tex"
+      - "**/*.md"
   pull_request:
     paths:
-      - "**/*.lean"
-      - "lean-toolchain"
       - ".github/workflows/chronos-check.yml"
+      - "**/*.tex"
+      - "**/*.md"
+
 jobs:
   paper_only_check:
     runs-on: ubuntu-latest
     steps:
-      - name: Guard — lean-toolchain present
+      - name: Guard — lean-toolchain (optional, informational)
         run: |
-          test -f lean-toolchain
-          cat lean-toolchain
+          if [ -f lean-toolchain ]; then
+            echo "lean-toolchain present:"
+            cat lean-toolchain
+          else
+            echo "lean-toolchain not present — paper-only repo"
+          fi
 
-      - name: Guard — Lean tools available
-        run: |
-          lean --version || exit 1
-          lake --version || exit 1
       - name: Paper-only repository check
         run: |
           echo "Chronos-EntropyDepth is paper-only."
-          echo "No Lean or executable artifacts required."
+          echo "No Lean, Lake, or executable artifacts required."
           exit 0
-
