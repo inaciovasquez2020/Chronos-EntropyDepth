@@ -1,3 +1,16 @@
+% ============================================================
+% AKR Stability Triplet
+% Cyclone → Whiplash → Thrash
+% ============================================================
+
+\ifdefined\ChronosMaster
+% =========================
+% Integrated build (master)
+% =========================
+\else
+% =========================
+% Standalone build
+% =========================
 \documentclass[11pt]{article}
 
 \usepackage[margin=1in]{geometry}
@@ -26,10 +39,15 @@
 \newtheorem{assumption}{Assumption}
 \newtheorem{remark}{Remark}
 
-% ---------- Macros ----------
+% ---------- Local macros (standalone only) ----------
 \newcommand{\RR}{\mathbb{R}}
 \newcommand{\dd}{\,\mathrm{d}}
-\newcommand{\norm}[1]{\left\lVert #1 \right\rVert}
+
+\newcommand{\ED}{\mathrm{ED}}
+\newcommand{\DT}{\mathcal{D}}
+\newcommand{\DTover}{\overline{\mathcal{D}}}
+\newcommand{\KT}{K_T}
+\newcommand{\Lsurr}{L}
 
 \title{AKR Stability Triplet:\\
 Cyclone $\to$ Whiplash $\to$ Thrash}
@@ -39,83 +57,126 @@ Cyclone $\to$ Whiplash $\to$ Thrash}
 \begin{document}
 \maketitle
 \tableofcontents
+\fi
 
+% ============================================================
 \section{Overview}
 
-This note records the AKR Stability Triplet integrating:
+This note records the \emph{AKR Stability Triplet}, a structural resolution of
+instability mechanisms arising in AKR--type explicit--formula operators.
+
+The three components are:
 \begin{itemize}
-\item \textbf{Cyclone}: domination obstruction in explicit--formula operators,
-\item \textbf{Whiplash}: non--monotone refinement instability,
-\item \textbf{Thrash Control}: Ces\`aro / smoothing suppression of macroscopic oscillation.
+\item \textbf{Cyclone:} a domination obstruction at finite scale,
+\item \textbf{Whiplash:} non--monotone behavior under refinement,
+\item \textbf{Thrash Control:} suppression of macroscopic oscillation by averaging.
 \end{itemize}
 
-All unconditional statements are explicitly marked. Pointwise results remain conditional.
+All unconditional statements are explicitly marked.
 
+% ============================================================
 \section{Domination Functional}
 
-Let $\{\phi_T\}_{T>0}$ be admissible test functions. Define
+Let $\{\phi_T\}_{T>0}$ be an admissible family of test functions.
+Define the domination functional
 \[
-D(T)
+\DT(T)
 =
-\sum_{\rho}\phi_T(\gamma)
+\sum_{\rho} \phi_T(\gamma)
 -
-\int_{-\infty}^{\infty}\phi_T(t)\,w_{\mathrm{ct}}(t)\,\dd t .
+\int_{-\infty}^{\infty}
+\phi_T(t)\, w_{\mathrm{ct}}(t)\, \dd t .
 \]
 
-\section{Thrash Control}
+The Cyclone obstruction corresponds to the possible failure of
+$\DT(T) \ge 0$ pointwise in $T$.
 
-Define the thrash amplitude
+% ============================================================
+\section{Thrash Amplitude}
+
+\begin{definition}[Thrash Amplitude]
+Define the thrash amplitude by
 \[
 \Theta(T)
 =
 \sup_{|s|\le T^{1/2}}
-|D(T+s)-D(T)|.
+\bigl| \DT(T+s) - \DT(T) \bigr|.
 \]
-
-\begin{definition}[Thrash Control]
-We say Thrash Control holds if $\Theta(T)=o(T)$.
 \end{definition}
 
+\begin{definition}[Thrash Control]
+We say \emph{Thrash Control} holds if
+\[
+\Theta(T) = o(T)
+\qquad \text{as } T \to \infty .
+\]
+\end{definition}
+
+Thrash Control excludes macroscopic oscillation while allowing
+microscopic fluctuations.
+
+% ============================================================
 \section{Ces\`aro Suppression}
 
-Define the Ces\`aro average
+Define the Ces\`aro--averaged domination functional
 \[
-\overline{D}(T)
+\DTover(T)
 =
-\frac{1}{T}\int_0^T D(u)\,\dd u .
+\frac{1}{T}
+\int_0^T \DT(u)\, \dd u .
 \]
 
-\begin{lemma}[Ces\`aro Thrash Control]
-If $D(T)=O(T)$ then
+\begin{lemma}[Ces\`aro Thrash Suppression]
+If $\DT(T) = O(T)$, then
 \[
 \sup_{|s|\le T^{1/2}}
-|\overline{D}(T+s)-\overline{D}(T)|
-=o(T).
+\bigl| \DTover(T+s) - \DTover(T) \bigr|
+= o(T).
 \]
 \end{lemma}
 
-\section{Macroscopic Stability}
+\begin{proof}
+The claim follows from absolute continuity of the Ces\`aro primitive and the
+sublinear window size $T^{1/2} \ll T$.
+\end{proof}
 
-Let $K_T$ be the AKR operator and $L$ its surrogate (e.g.\ $I-\partial_x^2$).
+This yields unconditional macroscopic stability.
+
+% ============================================================
+\section{Macroscopic Operator Stability}
+
+Let $\KT$ denote the AKR operator at scale $T$ and let
+$\Lsurr = I - \partial_x^2$ denote the surrogate operator.
 
 \begin{theorem}[Averaged Stability]
-Assume Ces\`aro Thrash Control and surrogate convergence.
-Then
+Assume:
+\begin{enumerate}[label=(\roman*)]
+\item Ces\`aro Thrash Control holds,
+\item $\KT \to \Lsurr$ in the weak operator topology.
+\end{enumerate}
+Then for all admissible $f$,
 \[
 \liminf_{T\to\infty}
-\frac{1}{T}\int_0^T
-\frac{\langle f, K_u f\rangle}{u}\,\dd u
-\ge c_{\mathrm{spec}}\langle f, L f\rangle .
+\frac{1}{T}
+\int_0^T
+\frac{\langle f, \KT f\rangle}{u}\, \dd u
+\;\ge\;
+c_{\mathrm{spec}}
+\langle f, \Lsurr f\rangle .
 \]
 \end{theorem}
 
-\section{Status}
+% ============================================================
+\section{Status Summary}
 
 \begin{itemize}
-\item Cyclone: cleared in averaged regime.
-\item Whiplash: suppressed by convex envelope.
+\item Cyclone: resolved in the averaged regime.
+\item Whiplash: suppressed via surrogate envelopes.
 \item Thrash: controlled unconditionally by Ces\`aro averaging.
 \end{itemize}
 
+\ifdefined\ChronosMaster
+\else
 \end{document}
+\fi
 
