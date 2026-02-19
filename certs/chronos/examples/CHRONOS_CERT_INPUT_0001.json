@@ -1,0 +1,24 @@
+{
+  "cert_id": "CHRONOS-CERT-0001",
+  "claim": "EntropyDepth definitions and bounds are internally consistent under declared constraints",
+  "artifacts": [
+    "docs",
+    "src",
+    "theory"
+  ],
+  "constraints": [
+    "no external network access",
+    "deterministic evaluation",
+    "finite transcript capacity"
+  ],
+  "capacity": {
+    "tokens": 10000,
+    "time_sec": 180,
+    "memory_mb": 2048
+  },
+  "non_claims": [
+    "no claim to solve P vs NP",
+    "no performance guarantees",
+    "no heuristic algorithm design"
+  ]
+}
