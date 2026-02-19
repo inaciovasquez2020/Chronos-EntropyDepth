@@ -1,0 +1,145 @@
+\documentclass[11pt]{article}
+
+% ============================================================
+% Chronos Master Guard
+% ============================================================
+\def\ChronosMaster{}
+
+% ============================================================
+% Packages
+% ============================================================
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{enumitem}
+\usepackage{hyperref}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  urlcolor=blue,
+  citecolor=blue
+}
+
+% ============================================================
+% Theorem Environments
+% ============================================================
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newtheorem{assumption}{Assumption}
+\newtheorem{remark}{Remark}
+
+% ============================================================
+% Chronos Global Macros
+% ============================================================
+\input{docs/chronos_macros.tex}
+
+% ============================================================
+% Title
+% ============================================================
+\title{Chronos--EntropyDepth:\\
+Structural Limits on Refinement and Computation}
+\author{Inacio F. Vasquez}
+\date{\today}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+% ============================================================
+\section{Introduction}
+
+The \emph{Chronos--EntropyDepth} framework studies structural limits on
+refinement-based computation. The central invariant, \emph{Entropy Depth}
+($\ED$), quantifies the minimum number of admissible refinement steps required
+to resolve global information under locality and capacity constraints.
+
+Rather than focusing on algorithmic efficiency, Chronos isolates
+\emph{structural obstructions} that prevent rapid global resolution.
+
+% ============================================================
+\section{Entropy Depth}
+
+\begin{definition}[Entropy Depth]
+Let $\{\mathcal{R}_t\}_{t\ge0}$ be an admissible refinement process acting on a
+space of instances with initial entropy $H_0$.
+The \emph{entropy depth} $\ED$ is the minimal $t$ such that the residual entropy
+falls below a fixed resolution threshold.
+\end{definition}
+
+Entropy depth lower bounds express impossibility results for refinement-based
+procedures under fixed locality.
+
+% ============================================================
+\section{AKR Operators and Explicit Formula Structure}
+
+AKR-type operators arise from explicit-formula representations and encode
+interactions between spectral data and arithmetic structure.
+
+Let $\KT$ denote the AKR operator truncated at scale $T$, and let
+$\Lsurr = I - \partial_x^2$ denote the canonical surrogate operator.
+
+A central obstruction is the domination inequality
+\[
+\KT \succeq c\,\Lsurr ,
+\]
+which may fail pointwise in the truncation parameter $T$.
+
+% ============================================================
+\section{Refinement Instabilities}
+
+Two instability mechanisms arise naturally:
+
+\begin{itemize}
+\item \textbf{Cyclone:} failure of domination at finite scale.
+\item \textbf{Whiplash:} non-monotone behavior of certificates under refinement.
+\end{itemize}
+
+These phenomena are structural and persist independently of numerical accuracy.
+
+% ============================================================
+\section{Averaging and Stability Mechanisms}
+
+Macroscopic stability is restored by combining:
+\begin{itemize}
+\item surrogate envelopes that suppress Whiplash,
+\item averaging and smoothing that suppress oscillatory Thrash.
+\end{itemize}
+
+The resulting stability holds unconditionally at the averaged level.
+
+% ============================================================
+\appendix
+\section{AKR Stability Triplet: Cyclone--Whiplash--Thrash}
+\label{app:akr-stability-triplet}
+
+\input{docs/akr-stability-triplet/akr_stability_triplet.tex}
+
+% ============================================================
+\section{Consequences for Entropy Depth}
+
+The AKR Stability Triplet supplies the final structural ingredient needed to
+close entropy depth lower bounds within the Chronos framework.
+
+Averaged domination suffices for all Chronos lower-bound arguments; pointwise
+domination is required only for conditional sharpenings.
+
+% ============================================================
+\section{Status Summary}
+
+\begin{itemize}
+\item Cyclone obstruction: resolved in the averaged regime.
+\item Whiplash instability: suppressed via surrogate envelopes.
+\item Thrash oscillations: controlled unconditionally by Ces\`aro averaging.
+\item Remaining gaps: conditional rigidity amplification only.
+\end{itemize}
+
+\end{document}
+
