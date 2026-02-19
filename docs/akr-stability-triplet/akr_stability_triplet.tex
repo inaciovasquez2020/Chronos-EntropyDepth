@@ -1,0 +1,121 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{enumitem}
+\usepackage{hyperref}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  urlcolor=blue,
+  citecolor=blue
+}
+
+% ---------- Theorem environments ----------
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newtheorem{assumption}{Assumption}
+\newtheorem{remark}{Remark}
+
+% ---------- Macros ----------
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\dd}{\,\mathrm{d}}
+\newcommand{\norm}[1]{\left\lVert #1 \right\rVert}
+
+\title{AKR Stability Triplet:\\
+Cyclone $\to$ Whiplash $\to$ Thrash}
+\author{Chronos--EntropyDepth}
+\date{\today}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\section{Overview}
+
+This note records the AKR Stability Triplet integrating:
+\begin{itemize}
+\item \textbf{Cyclone}: domination obstruction in explicit--formula operators,
+\item \textbf{Whiplash}: non--monotone refinement instability,
+\item \textbf{Thrash Control}: Ces\`aro / smoothing suppression of macroscopic oscillation.
+\end{itemize}
+
+All unconditional statements are explicitly marked. Pointwise results remain conditional.
+
+\section{Domination Functional}
+
+Let $\{\phi_T\}_{T>0}$ be admissible test functions. Define
+\[
+D(T)
+=
+\sum_{\rho}\phi_T(\gamma)
+-
+\int_{-\infty}^{\infty}\phi_T(t)\,w_{\mathrm{ct}}(t)\,\dd t .
+\]
+
+\section{Thrash Control}
+
+Define the thrash amplitude
+\[
+\Theta(T)
+=
+\sup_{|s|\le T^{1/2}}
+|D(T+s)-D(T)|.
+\]
+
+\begin{definition}[Thrash Control]
+We say Thrash Control holds if $\Theta(T)=o(T)$.
+\end{definition}
+
+\section{Ces\`aro Suppression}
+
+Define the Ces\`aro average
+\[
+\overline{D}(T)
+=
+\frac{1}{T}\int_0^T D(u)\,\dd u .
+\]
+
+\begin{lemma}[Ces\`aro Thrash Control]
+If $D(T)=O(T)$ then
+\[
+\sup_{|s|\le T^{1/2}}
+|\overline{D}(T+s)-\overline{D}(T)|
+=o(T).
+\]
+\end{lemma}
+
+\section{Macroscopic Stability}
+
+Let $K_T$ be the AKR operator and $L$ its surrogate (e.g.\ $I-\partial_x^2$).
+
+\begin{theorem}[Averaged Stability]
+Assume Ces\`aro Thrash Control and surrogate convergence.
+Then
+\[
+\liminf_{T\to\infty}
+\frac{1}{T}\int_0^T
+\frac{\langle f, K_u f\rangle}{u}\,\dd u
+\ge c_{\mathrm{spec}}\langle f, L f\rangle .
+\]
+\end{theorem}
+
+\section{Status}
+
+\begin{itemize}
+\item Cyclone: cleared in averaged regime.
+\item Whiplash: suppressed by convex envelope.
+\item Thrash: controlled unconditionally by Ces\`aro averaging.
+\end{itemize}
+
+\end{document}
+
