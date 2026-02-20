@@ -1,0 +1,154 @@
+\section{FLG as a Chronos One--Step Work Inequality}
+Let $X$ be a finite hidden state with $H(X)=\Theta(n)$ and let $(\mathcal{H}_t)$ be the
+transcript filtration of an admissible algorithm. Define the posterior
+$\mu_t(x)=\mathbb{P}(X=x\mid\mathcal{H}_t)$.
+Define the local witness energy
+D
+t
+:
+=
+sup
+⁡
+φ
+∈
+F
+O
+R
+k
+∣
+E
+μ
+t
+[
+φ
+(
+X
+)
+]
+−
+E
+μ
+t
+−
+1
+[
+φ
+(
+X
+)
+]
+∣
+D 
+t
+​	
+ := 
+φ∈FO 
+R
+k
+​	
+ 
+sup
+​	
+  
+​	
+ E 
+μ 
+t
+​	
+ 
+​	
+ [φ(X)]−E 
+μ 
+t−1
+​	
+ 
+​	
+ [φ(X)] 
+​	
+ 
+and the one--step information work
+Δ
+t
+:
+=
+I
+(
+X
+;
+Y
+t
+∣
+H
+t
+−
+1
+)
+.
+Δ 
+t
+​	
+ :=I(X;Y 
+t
+​	
+ ∣H 
+t−1
+​	
+ ).
+Assume admissibility: bounded FO$^k$ locality (A3$'$), a transcript capacity ceiling
+$\Delta_t\le C$, and a bounded log-likelihood ratio update
+∣
+log
+⁡
+μ
+t
+(
+x
+)
+μ
+t
+−
+1
+(
+x
+)
+∣
+≤
+L
+.
+​	
+ log 
+μ 
+t−1
+​	
+ (x)
+μ 
+t
+​	
+ (x)
+​	
+  
+​	
+ ≤L.
+Then there exists $c>0$ such that
+Δ
+t
+≥
+ε
+⇒
+D
+t
+≥
+c
+ 
+ε
+.
+Δ 
+t
+​	
+ ≥ε⇒D 
+t
+​	
+ ≥cε.
+Equivalently, no admissible algorithm can accumulate global information without
+producing a bounded-radius FO-definable local witness. This is the dynamic
+counterpart of Configuration Support Rigidity and yields Chronos depth lower bounds.
